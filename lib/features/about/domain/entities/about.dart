@@ -6,6 +6,7 @@ class About {
   final String phone;
   final int age;
   final String image;
+  final String address;
   final SocialMedia socialMedia;
   About({
     required this.summary,
@@ -13,6 +14,7 @@ class About {
     required this.phone,
     required this.age,
     required this.image,
+    required this.address,
     required this.socialMedia,
   });
 }

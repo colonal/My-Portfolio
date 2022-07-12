@@ -1,10 +1,18 @@
-abstract class Failure {}
-
-class OfflineFailure extends Failure {}
-
-class ServerFailure extends Failure {
+abstract class Failure {
   final String message;
-  ServerFailure({required this.message});
+  Failure({
+    required this.message,
+  });
 }
 
-class EmptyCacheFailure extends Failure {}
+class OfflineFailure extends Failure {
+  OfflineFailure({required super.message});
+}
+
+class ServerFailure extends Failure {
+  ServerFailure({required super.message});
+}
+
+class EmptyCacheFailure extends Failure {
+  EmptyCacheFailure({required super.message});
+}

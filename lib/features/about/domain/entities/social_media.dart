@@ -6,23 +6,34 @@ class SocialMedia {
       {required this.facebook, required this.github, required this.linkedin});
 }
 
-class Facebook {
+abstract class SocialMediaItme {
   final String url;
   final String name;
-
-  Facebook({required this.url, required this.name});
+  final String icon;
+  SocialMediaItme({
+    required this.url,
+    required this.name,
+    required this.icon,
+  });
 }
 
-class Linkedin {
-  final String url;
-  final String name;
-
-  Linkedin({required this.url, required this.name});
+class Facebook extends SocialMediaItme {
+  Facebook(
+      {required super.url,
+      required super.name,
+      super.icon = "assets/images/facebook.png"});
 }
 
-class Github {
-  final String url;
-  final String name;
+class Linkedin extends SocialMediaItme {
+  Linkedin(
+      {required super.url,
+      required super.name,
+      super.icon = "assets/images/linkedin.png"});
+}
 
-  Github({required this.url, required this.name});
+class Github extends SocialMediaItme {
+  Github(
+      {required super.url,
+      required super.name,
+      super.icon = "assets/images/github.png"});
 }

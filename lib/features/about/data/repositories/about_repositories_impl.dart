@@ -16,7 +16,6 @@ class AboutRepositoriesImpl extends AboutRepositories {
       final remote = await dataSource.getDataAbout();
       return Right(remote);
     } catch (e) {
-      print("ERORR About: " + e.toString());
       return Left(ServerFailure(message: e.toString()));
     }
   }

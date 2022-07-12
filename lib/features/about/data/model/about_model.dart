@@ -8,15 +8,17 @@ class AboutModel extends About {
       required super.phone,
       required super.age,
       required super.image,
+      required super.address,
       required super.socialMedia});
 
   factory AboutModel.fromJson(dynamic json) {
     return AboutModel(
-      summary: json["summart"],
+      summary: json["summary"],
       name: json["name"],
       phone: json["phone"],
       age: json["age"],
       image: json["image"],
+      address: json["address"],
       socialMedia: SocialMediaModel.fromJson(json["social_media"]),
     );
   }

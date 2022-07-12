@@ -47,5 +47,10 @@ ThemeData desktopTheme = ThemeData(
       fontWeight: FontWeight.normal,
       letterSpacing: 1.3,
     ),
+    headline6: TextStyle(
+      color: AppColor.textColor.withOpacity(0.6),
+      fontSize: 18,
+      fontWeight: FontWeight.w200,
+    ),
   ),
 );
