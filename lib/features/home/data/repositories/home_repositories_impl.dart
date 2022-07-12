@@ -14,7 +14,7 @@ class HomeRepositoriesImpl extends HomeRepositories {
   @override
   Future<Either<Failure, Home>> getHomeData() async {
     try {
-      final remote = await remoteDataSource.getGataHome();
+      final remote = await remoteDataSource.getDataHome();
       return Right(remote);
     } catch (e) {
       print("E: " + e.toString());

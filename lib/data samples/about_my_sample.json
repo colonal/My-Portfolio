@@ -1,0 +1,22 @@
+{
+    "summary":"My name is Mohammad\nI'm a Mobile Application Dovelper\nEducation: B.S. of Computer Science",
+    "name":"mohammade Ebbeni",
+    "phone":"+962790785791",
+    "age":"21",
+    "address":"Jordan",
+    "image":"",
+    "social_media":{
+        "faceboke":{
+            "url":"",
+            "name": "mohammade.ebbeni"
+        },
+        "linkdin":{
+            "url":"",
+            "name": "mohammade-ebbeni"
+        },
+        "github":{
+            "url":"",
+            "name": "colonal"
+        }
+    }
+}
