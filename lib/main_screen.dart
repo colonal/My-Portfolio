@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/features/about/presentatioon/page/about_page.dart';
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_page.dart';
 
 import 'core/utils/my_bloc_observer.dart';
-import 'features/about/presentatioon/bloc/about_bloc.dart';
+import 'features/about/presentation/bloc/about_bloc.dart';
+import 'features/about/presentation/page/about_page.dart';
 import 'ingection_container.dart' as di;
 
 class MainScreen extends StatelessWidget {
