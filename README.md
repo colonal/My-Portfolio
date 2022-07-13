@@ -1,16 +1,7 @@
-# my_profile
+# 🤸‍♂️ portfolio
+This repository contains code for my portfolio website which is made using flutter.
 
-A new Flutter project.
+> **_NOTE:_**  under development
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# UI/UX 
+<img src="UI-UX/Web.png" width="200em"><img src="UI-UX/Mobile.png" width="200em"><img src="UI-UX/System Color and Character Styles.png" width="200em">
