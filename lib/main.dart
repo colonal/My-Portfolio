@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:my_profile/core/utils/screen_helper.dart';
+import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
 import 'package:my_profile/main_screen.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MediaQuery(
       data: const MediaQueryData(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Colonal',
         debugShowCheckedModeBanner: false,
         theme: ScreenHelper.isDesktop(context)
             ? AppTheme.themeDesktop

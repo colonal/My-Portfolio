@@ -4,12 +4,14 @@ import 'package:my_profile/features/about/data/datasources/about_remote_data_sou
 import 'package:my_profile/features/about/data/repositories/about_repositories_impl.dart';
 import 'package:my_profile/features/about/domain/repositories/about_repositories.dart';
 import 'package:my_profile/features/about/domain/usecases/about_usecases.dart';
-import 'package:my_profile/features/about/presentatioon/bloc/about_bloc.dart';
+
 import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
 import 'package:my_profile/features/home/domain/repositories/home_repositories.dart';
 import 'package:my_profile/features/home/domain/usecasee/get_data_home.dart';
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
+
+import 'features/about/presentation/bloc/about_bloc.dart';
 
 final sl = GetIt.instance;
 

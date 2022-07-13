@@ -28,7 +28,7 @@ ThemeData mobileTheme = ThemeData(
     ),
     headline3: TextStyle(
       color: AppColor.textColor,
-      fontFamily: "Segone UI",
+      // fontFamily: "Segone UI",
       fontSize: 20,
       fontWeight: FontWeight.w300,
       letterSpacing: 1.7,
@@ -46,6 +46,11 @@ ThemeData mobileTheme = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.normal,
       letterSpacing: 1.3,
+    ),
+    headline6: TextStyle(
+      color: AppColor.textColor.withOpacity(0.6),
+      fontSize: 18,
+      fontWeight: FontWeight.w200,
     ),
   ),
 );
