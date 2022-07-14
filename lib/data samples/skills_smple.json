@@ -1,9 +1,11 @@
 {
-    "Techs/Frameworks": [
-        "Flutter",
-        "Firebase"
-    ],
-    "Version Control":[
-        "Git GitHub"
-    ]
+    "skill":{
+        "Techs/Frameworks": [
+            "Flutter",
+            "Firebase"
+        ],
+        "Version Control": [
+            "Git GitHub"
+        ]
+    }
 }
