@@ -38,7 +38,7 @@ ThemeData desktopTheme = ThemeData(
       fontFamily: "Segone UI",
       fontSize: 30,
       fontWeight: FontWeight.bold,
-      letterSpacing: 1.7,
+      letterSpacing: 1.4,
     ),
     headline5: TextStyle(
       color: AppColor.textColor,
@@ -48,7 +48,7 @@ ThemeData desktopTheme = ThemeData(
       letterSpacing: 1.3,
     ),
     headline6: TextStyle(
-      color: AppColor.textColor.withOpacity(0.6),
+      color: AppColor.textColor.withOpacity(0.7),
       fontSize: 20,
       fontWeight: FontWeight.w200,
     ),

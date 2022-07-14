@@ -6,14 +6,20 @@ import '../theme/app_color.dart';
 class TitlePage extends StatelessWidget {
   final String title;
   final String subTitle;
+  final bool isCenter;
 
-  const TitlePage({required this.title, required this.subTitle, super.key});
+  const TitlePage(
+      {required this.title,
+      required this.subTitle,
+      this.isCenter = false,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          isCenter ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         AutoSizeText(
           subTitle,

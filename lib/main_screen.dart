@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_page.dart';
+import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
+import 'package:my_profile/features/skills/presentation/pages/skills_page.dart';
 
 import 'core/utils/my_bloc_observer.dart';
 import 'features/about/presentation/bloc/about_bloc.dart';
@@ -30,6 +32,13 @@ class MainScreen extends StatelessWidget {
           },
           blocObserver: MyBlocObserver(),
         ),
+        BlocOverrides.runZoned(
+          () {
+            return BlocProvider(
+                create: (_) => di.sl<SkillsBloc>()..add(GetDataSkillsEvent()));
+          },
+          blocObserver: MyBlocObserver(),
+        ),
       ],
       child: Scaffold(
         body: SingleChildScrollView(
@@ -37,6 +46,7 @@ class MainScreen extends StatelessWidget {
             children: const [
               HomePage(),
               AboutPage(),
+              SkilsPage(),
             ],
           ),
         ),

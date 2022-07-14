@@ -49,7 +49,7 @@ ThemeData mobileTheme = ThemeData(
     ),
     headline6: TextStyle(
       color: AppColor.textColor.withOpacity(0.6),
-      fontSize: 18,
+      fontSize: 16,
       fontWeight: FontWeight.w200,
     ),
   ),
