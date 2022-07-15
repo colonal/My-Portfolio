@@ -7,6 +7,7 @@ import 'package:my_profile/features/home/data/repositories/home_repositories_imp
 import 'package:my_profile/main_screen.dart';
 import 'core/theme/app_thime.dart';
 
+import 'core/utils/my_custom_scroll_behavior.dart';
 import 'firebase_options.dart';
 import 'ingection_container.dart' as di;
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       data: const MediaQueryData(),
       child: MaterialApp(
         title: 'Colonal',
+        scrollBehavior: MyCustomScrollBehavior(),
         debugShowCheckedModeBanner: false,
         theme: ScreenHelper.isDesktop(context)
             ? AppTheme.themeDesktop

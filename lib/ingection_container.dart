@@ -4,6 +4,11 @@ import 'package:my_profile/features/about/data/datasources/about_remote_data_sou
 import 'package:my_profile/features/about/data/repositories/about_repositories_impl.dart';
 import 'package:my_profile/features/about/domain/repositories/about_repositories.dart';
 import 'package:my_profile/features/about/domain/usecases/about_usecases.dart';
+import 'package:my_profile/features/certifications/data/datasources/certifications_datasource.dart';
+import 'package:my_profile/features/certifications/data/repositories/certifications_repositories_impl.dart';
+import 'package:my_profile/features/certifications/domain/repositories/certifications_repositories.dart';
+import 'package:my_profile/features/certifications/domain/usecases/certifications_usecases.dart';
+import 'package:my_profile/features/certifications/presentation/bloc/certifications_bloc.dart';
 
 import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
@@ -65,6 +70,21 @@ Future<void> init() async {
   // dataSourse
   sl.registerLazySingleton<SkillsRemoteDataSource>(
       () => SkillsRemoteDataSourceImpl(firebase: sl()));
+
+  // Feature Certification
+  // Bloc
+  sl.registerFactory(() => CertificationsBloc(usecases: sl()));
+
+  // usecases
+  sl.registerLazySingleton(() => CertificationsUsecases(repositories: sl()));
+
+  // repositories
+  sl.registerLazySingleton<CertificationsRepositories>(
+      () => CertificationsRepositoriesImpl(dataSource: sl()));
+
+  // dataSource
+  sl.registerLazySingleton<CertificationsDataSource>(
+      () => CertificationsDataSourceImpl(firebase: sl()));
 
   // External
   final firebase = FirebaseFirestore.instance;

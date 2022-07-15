@@ -19,7 +19,7 @@ class CertificationsDataSourceImpl extends CertificationsDataSource {
         .collection("certification")
         .doc("DocCertifications")
         .get();
-    for (var itme in (data.data() as Map)["DocumentSnapshot"] as List) {
+    for (var itme in (data.data() as Map)["certifications"] as List) {
       dataList.add(CertificationsModel.fromJson(itme));
     }
     return dataList;
