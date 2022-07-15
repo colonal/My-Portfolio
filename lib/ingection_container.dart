@@ -15,6 +15,11 @@ import 'package:my_profile/features/home/data/repositories/home_repositories_imp
 import 'package:my_profile/features/home/domain/repositories/home_repositories.dart';
 import 'package:my_profile/features/home/domain/usecasee/get_data_home.dart';
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
+import 'package:my_profile/features/projects/data/datasources/project_remote_data_source.dart';
+import 'package:my_profile/features/projects/data/repositories/project_repositories_impl.dart';
+import 'package:my_profile/features/projects/domain/repositories/project_repositories.dart';
+import 'package:my_profile/features/projects/domain/usecasee/get_data_project_usecase.dart';
+import 'package:my_profile/features/projects/presentation/bloc/project_bloc.dart';
 import 'package:my_profile/features/skills/data/datasources/skills_remote_data_source.dart';
 import 'package:my_profile/features/skills/data/repositories/skills_repositories.dart';
 import 'package:my_profile/features/skills/domin/repositories/skills_repositories.dart';
@@ -85,6 +90,21 @@ Future<void> init() async {
   // dataSource
   sl.registerLazySingleton<CertificationsDataSource>(
       () => CertificationsDataSourceImpl(firebase: sl()));
+
+  // Feature Project
+  // Bloc
+  sl.registerFactory(() => ProjectBloc(usecase: sl()));
+
+  // usecase
+  sl.registerLazySingleton(() => GetDataProjectUsecase(repositories: sl()));
+
+  // repositorise
+  sl.registerLazySingleton<ProjectRepositories>(
+      () => ProjectRepositoriesImpl(dataSource: sl()));
+
+  // datasource
+  sl.registerLazySingleton<ProjectRemoteDataSource>(
+      () => ProjectRemoteDataSourceImpl(firebase: sl()));
 
   // External
   final firebase = FirebaseFirestore.instance;

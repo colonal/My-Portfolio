@@ -4,6 +4,8 @@ import 'package:my_profile/features/certifications/presentation/pages/certificat
 
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_page.dart';
+import 'package:my_profile/features/projects/presentation/bloc/project_bloc.dart';
+import 'package:my_profile/features/projects/presentation/pages/project_page.dart';
 import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
 import 'package:my_profile/features/skills/presentation/pages/skills_page.dart';
 
@@ -49,6 +51,14 @@ class MainScreen extends StatelessWidget {
           },
           blocObserver: MyBlocObserver(),
         ),
+        BlocOverrides.runZoned(
+          () {
+            return BlocProvider(
+                create: (_) =>
+                    di.sl<ProjectBloc>()..add(ProjectGetDataEvent()));
+          },
+          blocObserver: MyBlocObserver(),
+        ),
       ],
       child: Scaffold(
         body: SingleChildScrollView(
@@ -58,6 +68,7 @@ class MainScreen extends StatelessWidget {
               AboutPage(),
               SkilsPage(),
               CertificationsPage(),
+              ProjectPage(),
             ],
           ),
         ),

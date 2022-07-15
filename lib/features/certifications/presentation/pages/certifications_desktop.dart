@@ -25,7 +25,7 @@ class CertificationsDesktop extends StatelessWidget {
             const SizedBox(height: 50),
             SizedBox(
               width: double.infinity,
-              height: size.height * 0.7,
+              height: size.height * 0.6,
               child: GridView.builder(
                 itemCount: data.length,
                 scrollDirection: Axis.horizontal,
@@ -33,7 +33,7 @@ class CertificationsDesktop extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisExtent: size.width * 0.45,
                   childAspectRatio: 3 / 2,
-                  crossAxisSpacing: size.height * 0.18,
+                  crossAxisSpacing: size.height * 0.1,
                   mainAxisSpacing: 20,
                 ),
                 itemBuilder: (context, index) =>

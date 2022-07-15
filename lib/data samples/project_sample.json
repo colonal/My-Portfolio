@@ -1,0 +1,20 @@
+{
+    "projects": [
+        {
+            "name": "My Prayer",
+            "image": "https://github.com/colonal/My-Prayer/raw/main/assets/icon/icon.png",
+            "icons": "https://storage.googleapis.com/cms-storage-bucket/4fd5520fe28ebf839174.svg",
+            "description": "This is an application to display the Quran, Prayer times and remembrances",
+            "info": [
+                {
+                    "url": "https://github.com/colonal/My-Prayer",
+                    "icon":"https://cdn-icons-png.flaticon.com/512/1051/1051275.png"
+                },
+                {
+                    "url": "https://play.google.com/store/apps/details?id=codes.colonal.myPrayer",
+                    "icon":"https://cdn-icons-png.flaticon.com/512/6124/6124997.png"
+                }
+            ]
+        }
+    ]
+}
