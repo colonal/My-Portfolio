@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/count_page.dart';
+import 'package:my_profile/core/widget/screen_helper.dart';
 
-import '../../../../core/widget/count_page.dart';
-import '../../../../core/widget/screen_helper.dart';
 import '../../../../core/widget/title_page.dart';
-import '../../domain/entities/project.dart';
+import '../../domain/entities/certifications.dart';
 
-class ContentPage extends StatelessWidget {
-  final List<Project> data;
+class ContentWidget extends StatelessWidget {
+  final List<Certifications> data;
   final Widget child;
-  const ContentPage({required this.data, required this.child, Key? key})
+  const ContentWidget({required this.data, required this.child, Key? key})
       : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class ContentPage extends StatelessWidget {
     return CountPage(
       countText: "03",
       child: (context, size) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -24,7 +24,7 @@ class ContentPage extends StatelessWidget {
               height: size.height * 0.2,
               padding: EdgeInsets.symmetric(
                   vertical: ScreenHelper.isDesktop(context) ? 25 : 0),
-              alignment: Alignment.topCenter,
+              alignment: Alignment.center,
               child: const FittedBox(
                 fit: BoxFit.scaleDown,
                 child: TitlePage(
@@ -34,11 +34,13 @@ class ContentPage extends StatelessWidget {
                 ),
               ),
             ),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 500),
-              width: size.width,
-              height: size.height * 0.8,
-              child: child,
+            SingleChildScrollView(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 1),
+                width: size.width,
+                height: size.height * 0.8,
+                child: child,
+              ),
             ),
           ],
         ),

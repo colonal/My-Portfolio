@@ -61,16 +61,14 @@ class MainScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: const [
-              HomePage(),
-              AboutPage(),
-              SkilsPage(),
-              CertificationsPage(),
-              ProjectPage(),
-            ],
-          ),
+        body: ListView(
+          children: const [
+            HomePage(),
+            AboutPage(),
+            SkilsPage(),
+            CertificationsPage(),
+            ProjectPage(),
+          ],
         ),
       ),
     );

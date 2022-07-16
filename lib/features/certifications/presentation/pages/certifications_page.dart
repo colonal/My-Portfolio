@@ -21,9 +21,7 @@ class CertificationsPage extends StatelessWidget {
           if (state is CertificationsGetDataState) {
             return ScreenHelper(
               desktop: CertificationsDesktop(data: state.data),
-              mobile: CertificationsMobile(
-                data: state.data,
-              ),
+              mobile: CertificationsMobile(data: state.data),
             );
           }
           if (state is CertificationsErrorStete) {}

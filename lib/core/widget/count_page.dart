@@ -5,7 +5,7 @@ import 'package:my_profile/core/widget/screen_helper.dart';
 import '../theme/app_color.dart';
 
 class CountPage extends StatelessWidget {
-  final Widget child;
+  final Widget Function(BuildContext, Size) child;
   final String countText;
   const CountPage({required this.child, required this.countText, Key? key})
       : super(key: key);
@@ -20,7 +20,7 @@ class CountPage extends StatelessWidget {
       child: ScreenHelper.isDesktop(context)
           ? Stack(
               children: [
-                child,
+                child(context, size),
                 Positioned(
                   right: 0,
                   top: 30,
@@ -30,11 +30,16 @@ class CountPage extends StatelessWidget {
             )
           : Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [_countWidget(theme, size)],
+                Container(
+                  height: 30,
+                  alignment: AlignmentDirectional.centerEnd,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: _countWidget(theme, size),
+                  ),
                 ),
-                child,
+                child(context, Size(size.width, size.height - 40)),
               ],
             ),
     );

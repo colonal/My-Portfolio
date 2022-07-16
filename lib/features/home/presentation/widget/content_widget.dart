@@ -18,11 +18,6 @@ class ContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print("");
-    print((size.width).toString() + "  " + imgSize.width.toString());
-    print((size.height).toString() + "  " + imgSize.height.toString());
-    print(imgSize);
-    print("");
     return Container(
       width: size.width,
       height: size.height,
@@ -42,40 +37,47 @@ class ContentWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: imgSize.width,
-                height: imgSize.height,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(data.image),
-                      fit: BoxFit.cover,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: imgSize.width,
+                      height: imgSize.height,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: NetworkImage(data.image),
+                            fit: BoxFit.cover,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xffCBC7BF).withOpacity(0.2),
+                              offset: const Offset(10, 10),
+                              blurRadius: 6,
+                            ),
+                          ]),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xffCBC7BF).withOpacity(0.2),
-                        offset: const Offset(10, 10),
-                        blurRadius: 6,
-                      ),
-                    ]),
+                    const SizedBox(height: 50),
+                    AutoSizeText(
+                      data.name,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline1,
+                      minFontSize: 16,
+                    ),
+                    const SizedBox(height: 30),
+                    AutoSizeText(
+                      data.career,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline3,
+                      minFontSize: 14,
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 50),
-              AutoSizeText(
-                data.name,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline1,
-                minFontSize: 16,
-              ),
-              const SizedBox(height: 30),
-              AutoSizeText(
-                data.career,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline3,
-                minFontSize: 14,
-              ),
-              const Spacer(),
+
+              // const Spacer(),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Row(

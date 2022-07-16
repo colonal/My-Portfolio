@@ -12,19 +12,24 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomeBloc, HomeState>(
-      listener: (_, __) {},
-      builder: (context, state) {
-        debugPrint("state $state");
-        if (state is HomeGgetDataState) {
-          return ScreenHelper(
-            desktop: HomeDesktop(data: state.data),
-            mobile: HomeMobile(data: state.data),
-          );
-        }
-        if (state is HomeFailureDataState) print("message: " + state.message);
-        return const LodingWidget();
-      },
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height,
+      width: size.width,
+      child: BlocConsumer<HomeBloc, HomeState>(
+        listener: (_, __) {},
+        builder: (context, state) {
+          debugPrint("state $state");
+          if (state is HomeGgetDataState) {
+            return ScreenHelper(
+              desktop: HomeDesktop(data: state.data),
+              mobile: HomeMobile(data: state.data),
+            );
+          }
+          if (state is HomeFailureDataState) print("message: " + state.message);
+          return const LodingWidget();
+        },
+      ),
     );
   }
 }

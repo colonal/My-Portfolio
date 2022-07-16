@@ -21,6 +21,7 @@ class ProjectMobile extends StatelessWidget {
           crossAxisSpacing: size.height * 0.1,
           mainAxisSpacing: 20,
         ),
+        padding: const EdgeInsets.only(bottom: 20),
         itemBuilder: (context, index) =>
             ItmeProject(data: data[index], isDesktop: false),
       ),

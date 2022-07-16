@@ -42,9 +42,9 @@ class ItmeProject extends StatelessWidget {
 
   Widget _buildContent(ThemeData theme, BuildContext context) {
     return Expanded(
-      flex: isDesktop ? 4 : 3,
+      flex: 4,
       child: SizedBox(
-        height: 600,
+        height: 700,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -72,10 +72,11 @@ class ItmeProject extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Text(
+              child: AutoSizeText(
                 data.description + data.description,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
+                minFontSize: 10,
                 style: theme.textTheme.headline6,
               ),
             ),

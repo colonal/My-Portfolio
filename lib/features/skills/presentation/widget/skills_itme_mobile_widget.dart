@@ -16,21 +16,24 @@ class SkillsItmeMobileWidget extends StatelessWidget {
       children: [
         AutoSizeText(
           data.keys.first,
-          minFontSize: 10,
-          maxFontSize: 20,
+          minFontSize: 20,
+          maxFontSize: 25,
           style: theme.textTheme.headline4,
         ),
-        const SizedBox(height: 15),
+        // const SizedBox(height: 15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ...List.generate(
                 (data.values.first.length ~/ 3) == 0
                     ? 1
                     : ((data.values.first.length / 3).ceil()),
-                (index) => SizedBox(
+                (index) => Container(
                       width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.only(top: 5),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           buildTextItme(data, context, index * 3),
                           buildTextItme(data, context, index * 3 + 1),
@@ -57,17 +60,18 @@ class SkillsItmeMobileWidget extends StatelessWidget {
       Map<String, List<dynamic>> data, BuildContext context, int count) {
     final ThemeData theme = Theme.of(context);
     final Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width * 0.3,
-      height: 25,
-      child: count < data.values.first.length
-          ? AutoSizeText(
+    return count < data.values.first.length
+        ? SizedBox(
+            width: size.width * 0.33,
+            height: 25,
+            child: AutoSizeText(
               "- ${data.values.first[count]}",
               minFontSize: 10,
               maxFontSize: 20,
+              maxLines: 2,
               style: theme.textTheme.headline6,
-            )
-          : Container(),
-    );
+            ),
+          )
+        : Container();
   }
 }

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/count_page.dart';
 import 'package:my_profile/core/widget/title_page.dart';
@@ -12,7 +11,7 @@ class SkillsDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return CountPage(
       countText: "02",
-      child: Padding(
+      child: (context, size) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

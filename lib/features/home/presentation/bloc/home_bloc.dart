@@ -11,9 +11,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) async {
       if (event is HomeGetDataEvent) {
         emit(HomeLodingState());
-        print("\neither:\n");
+
         final either = await getDataHome();
-        print(either);
+
         either.fold(
           (failuer) => emit(HomeFailureDataState(message: failuer.toString())),
           (data) => emit(HomeGgetDataState(data: data)),

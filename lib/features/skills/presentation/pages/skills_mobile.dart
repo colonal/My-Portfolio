@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/count_page.dart';
 import 'package:my_profile/features/skills/presentation/widget/skills_itme_mobile_widget.dart';
@@ -13,25 +12,43 @@ class SkillsMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CountPage(
       countText: "02",
-      child: Expanded(
+      child: (context, size) => Expanded(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           child: Column(
             children: [
-              const TitlePage(
-                title: "My Skills",
-                subTitle: "My Awesome Skills",
-                isCenter: true,
+              SizedBox(
+                height: size.height * 0.1,
+                child: const FittedBox(
+                  fit: BoxFit.cover,
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TitlePage(
+                      title: "My Skills",
+                      subTitle: "My Awesome Skills",
+                      isCenter: true,
+                    ),
+                  ),
+                ),
               ),
-              const SizedBox(height: 30),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(
-                      data.length,
-                      (index) => SkillsItmeMobileWidget(
-                          data: data[index],
-                          showDivider: data.length - 1 != index)),
+              // const SizedBox(height: 30),
+              SizedBox(
+                height: size.height * 0.9,
+                width: size.width,
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: List.generate(
+                        data.length,
+                        (index) => SizedBox(
+                              width: size.width,
+                              child: SkillsItmeMobileWidget(
+                                data: data[index],
+                                showDivider: data.length - 1 != index,
+                              ),
+                            )),
+                  ),
                 ),
               )
             ],

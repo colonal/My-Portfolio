@@ -18,11 +18,10 @@ class ScreenHelper extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         print(constraints.maxWidth >= 800 ? "\ndesktop" : "\nmobile");
-        if (constraints.maxWidth >= 800) {
-          return desktop;
-        } else {
-          return mobile;
-        }
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          child: (constraints.maxWidth >= 800) ? desktop : mobile,
+        );
       },
     );
   }

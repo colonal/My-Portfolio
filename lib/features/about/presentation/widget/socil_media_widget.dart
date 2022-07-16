@@ -7,12 +7,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SocilMediaWidget extends StatelessWidget {
   final SocialMediaItme itme;
-  const SocilMediaWidget({required this.itme, super.key});
+  final double height;
+  const SocilMediaWidget({required this.itme, this.height = 0, super.key});
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: () async {
         try {
@@ -24,24 +24,18 @@ class SocilMediaWidget extends StatelessWidget {
         }
       },
       child: ScreenHelper.isMobile(context)
-          ? FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage(itme.icon),
-                    maxRadius: (size.width > 285) ? 12 : 10,
-                    minRadius: 3,
-                  ),
-                ],
-              ),
+          ? Container(
+              // backgroundImage: AssetImage(itme.icon),
+              height: height * 0.8,
+              width: height * 0.8,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: AssetImage(itme.icon))),
             )
           : Row(
               children: [
                 CircleAvatar(
                   backgroundImage: AssetImage(itme.icon),
-                  maxRadius: 14,
-                  minRadius: 3,
                 ),
                 const SizedBox(width: 5),
                 SizedBox(

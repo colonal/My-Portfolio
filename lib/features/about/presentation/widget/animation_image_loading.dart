@@ -23,11 +23,11 @@ class _AnimationImageLoadingState extends State<AnimationImageLoading>
   late AnimationController controller;
   @override
   void initState() {
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2))
-          ..repeat();
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500))
+      ..repeat();
     animation =
-        Tween<Offset>(begin: const Offset(-500, 0), end: const Offset(550, 0))
+        Tween<Offset>(begin: const Offset(-1000, 0), end: const Offset(1050, 0))
             .animate(controller);
     super.initState();
   }
@@ -44,7 +44,9 @@ class _AnimationImageLoadingState extends State<AnimationImageLoading>
       clipBehavior: Clip.antiAliasWithSaveLayer,
       width: widget.width,
       height: widget.height,
-      decoration: const BoxDecoration(),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.transparent, width: 10),
+      ),
       child: Stack(
         children: [
           widget.child,
@@ -56,15 +58,15 @@ class _AnimationImageLoadingState extends State<AnimationImageLoading>
                   animation: animation,
                   builder: (context, value) {
                     return Container(
-                      width: 5,
-                      height: widget.width,
+                      width: widget.width / 4,
+                      height: widget.height,
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.7),
+                            color: Colors.grey.withOpacity(0.5),
                             offset: animation.value,
-                            blurRadius: 50,
-                            spreadRadius: 40,
+                            blurRadius: 150,
+                            spreadRadius: 50,
                           ),
                         ],
                       ),

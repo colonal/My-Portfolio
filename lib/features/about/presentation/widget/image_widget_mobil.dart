@@ -5,12 +5,14 @@ import '../../../../core/widget/title_page.dart';
 
 class ImageWidgetMobil extends StatelessWidget {
   final String img;
-  const ImageWidgetMobil({required this.img, Key? key}) : super(key: key);
+  final Size size;
+  const ImageWidgetMobil({required this.img, required this.size, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size size = MediaQuery.of(context).size;
+
     return Image.network(
       img,
       fit: BoxFit.fitWidth,
@@ -37,19 +39,22 @@ class ImageWidgetMobil extends StatelessWidget {
                 child: child,
               ),
               Container(
+                height: size.height * 0.30,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
                     Colors.black.withOpacity(0.6),
                     Colors.black.withOpacity(0.6),
                   ]),
                 ),
-                child: Container(
-                  height: size.height * 0.30,
-                  alignment: Alignment.topLeft,
-                  padding: const EdgeInsets.all(25),
-                  child: const TitlePage(
-                    title: "About Me",
-                    subTitle: "Discver",
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.all(25),
+                    child: const TitlePage(
+                      title: "About Me",
+                      subTitle: "Discver",
+                    ),
                   ),
                 ),
               ),
@@ -60,6 +65,7 @@ class ImageWidgetMobil extends StatelessWidget {
           width: double.infinity,
           height: size.height * 0.30,
           child: Container(
+            width: double.infinity,
             height: size.height * 0.30,
             decoration: BoxDecoration(
               border: Border.all(color: theme.primaryColorDark, width: 10),
@@ -71,8 +77,8 @@ class ImageWidgetMobil extends StatelessWidget {
                 ),
               ],
             ),
-            width: double.infinity,
-            child: child,
+
+            // child: child,
           ),
         );
       }),
