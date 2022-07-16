@@ -25,10 +25,12 @@ class TitlePage extends StatelessWidget {
           subTitle,
           style:
               theme.textTheme.headline3!.copyWith(fontWeight: FontWeight.bold),
+          maxFontSize: theme.textTheme.headline1!.fontSize!,
         ),
         AutoSizeText(
           title,
           style: theme.textTheme.headline1,
+          maxFontSize: theme.textTheme.headline1!.fontSize!,
         ),
         Container(
           color: AppColor.textColorDark,

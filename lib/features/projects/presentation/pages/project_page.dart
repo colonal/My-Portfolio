@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_profile/core/utils/loding_widget.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/projects/presentation/bloc/project_bloc.dart';
-import 'package:my_profile/features/projects/presentation/pages/page_desktop.dart';
+import 'package:my_profile/features/projects/presentation/pages/project_desktop.dart';
+import 'package:my_profile/features/projects/presentation/pages/project_mobile.dart';
 
 class ProjectPage extends StatelessWidget {
   const ProjectPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class ProjectPage extends StatelessWidget {
           if (state is ProjectGetDataState) {
             return ScreenHelper(
               desktop: PageDesktop(data: state.data),
-              mobile: SizedBox(),
+              mobile: ProjectMobile(data: state.data),
             );
           }
           if (state is ProjectErrorState) {
