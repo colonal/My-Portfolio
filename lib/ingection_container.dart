@@ -9,6 +9,11 @@ import 'package:my_profile/features/certifications/data/repositories/certificati
 import 'package:my_profile/features/certifications/domain/repositories/certifications_repositories.dart';
 import 'package:my_profile/features/certifications/domain/usecases/certifications_usecases.dart';
 import 'package:my_profile/features/certifications/presentation/bloc/certifications_bloc.dart';
+import 'package:my_profile/features/contact/data/datasources/contact_remote_data_sources.dart';
+import 'package:my_profile/features/contact/data/repositories/contact_repositories_impl.dart';
+import 'package:my_profile/features/contact/domain/repositories/contact_repositories.dart';
+import 'package:my_profile/features/contact/domain/usecases/add_contact.dart';
+import 'package:my_profile/features/contact/persentation/bloc/contact_bloc.dart';
 
 import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
@@ -105,6 +110,21 @@ Future<void> init() async {
   // datasource
   sl.registerLazySingleton<ProjectRemoteDataSource>(
       () => ProjectRemoteDataSourceImpl(firebase: sl()));
+
+  // Feature Contact
+  // Bloc
+  sl.registerFactory(() => ContactBloc(addContactUsecase: sl()));
+
+  // usecase
+  sl.registerLazySingleton(() => AddContactUsecase(repositories: sl()));
+
+  // repositories
+  sl.registerLazySingleton<ContactRepositories>(
+      () => ContactRepositoriesImpl(dataSource: sl()));
+
+  // datasourse
+  sl.registerLazySingleton<ContactRemoteDataSource>(
+      () => ContactRemoteDataSourceImpl(firestore: sl()));
 
   // External
   final firebase = FirebaseFirestore.instance;
