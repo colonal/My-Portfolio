@@ -15,9 +15,13 @@ class ContactRemoteDataSourceImpl extends ContactRemoteDataSource {
 
   @override
   Future<Unit> addContact(Contact data) async {
-    await firestore.collection("contact").doc("DocContact").update({
-      "contact": FieldValue.arrayUnion([ContactModel.toMap(data)]),
-    });
+    await firestore.collection("contact").doc(data.email).set(
+        {
+          "contact": FieldValue.arrayUnion([ContactModel.toMap(data)]),
+        },
+        SetOptions(
+          merge: true,
+        ));
     return Future.value(unit);
   }
 }

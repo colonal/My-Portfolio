@@ -1,28 +1,16 @@
 {
     "contact": [
         {
-            "test@gmail.com": [
-                {
-                    "name": "mohammad",
-                    "email": "test@gmail.com",
-                    "subject": "Flutter Developer",
-                    "message": "your message"
-                },
-                {
-                    "name": "mohammad",
-                    "email": "test@gmail.com",
-                    "subject": "Flutter Developer",
-                    "message": "your message"
-                }
-            ],
-            "test1@gmail.com": [
-                {
-                    "name": "ahmid",
-                    "email": "test1@gmail.com",
-                    "subject": "Flutter Developer",
-                    "message": "your message"
-                }
-            ]
+            "name": "mohammad",
+            "email": "test@gmail.com",
+            "subject": "Flutter Developer",
+            "message": "your message"
+        },
+        {
+            "name": "mohammad",
+            "email": "test@gmail.com",
+            "subject": "Flutter Developer",
+            "message": "your message"
         }
     ]
 }
