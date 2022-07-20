@@ -15,6 +15,7 @@ import 'features/about/presentation/bloc/about_bloc.dart';
 import 'features/about/presentation/page/about_page.dart';
 import 'features/certifications/presentation/bloc/certifications_bloc.dart';
 import 'features/contact/persentation/bloc/contact_bloc.dart';
+import 'features/copyright/persentaion/bloc/copyright_bloc.dart';
 import 'ingection_container.dart' as di;
 
 class MainScreen extends StatelessWidget {
@@ -68,6 +69,9 @@ class MainScreen extends StatelessWidget {
             );
           },
           blocObserver: MyBlocObserver(),
+        ),
+        BlocProvider(
+          create: (_) => di.sl<CopyrightBloc>(),
         ),
       ],
       child: Scaffold(

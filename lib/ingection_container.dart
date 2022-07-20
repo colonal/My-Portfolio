@@ -14,6 +14,11 @@ import 'package:my_profile/features/contact/data/repositories/contact_repositori
 import 'package:my_profile/features/contact/domain/repositories/contact_repositories.dart';
 import 'package:my_profile/features/contact/domain/usecases/add_contact.dart';
 import 'package:my_profile/features/contact/persentation/bloc/contact_bloc.dart';
+import 'package:my_profile/features/copyright/data/datasources/copyright_datasources.dart';
+import 'package:my_profile/features/copyright/data/repositories/copyright_repositores_impl.dart';
+import 'package:my_profile/features/copyright/domain/repositories/copyright_repositories.dart';
+import 'package:my_profile/features/copyright/domain/usecases/copyright_usecase.dart';
+import 'package:my_profile/features/copyright/persentaion/bloc/copyright_bloc.dart';
 
 import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
 import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
@@ -125,6 +130,21 @@ Future<void> init() async {
   // datasourse
   sl.registerLazySingleton<ContactRemoteDataSource>(
       () => ContactRemoteDataSourceImpl(firestore: sl()));
+
+  // Feature Copyright
+  // Bloc
+  sl.registerFactory(() => CopyrightBloc(getData: sl()));
+
+  // usecase
+  sl.registerLazySingleton(() => CopyRightGetData(repositories: sl()));
+
+  // repositories
+  sl.registerLazySingleton<CopyRightRepositories>(
+      () => CopyrightRepositoresImpl(datasources: sl()));
+
+  // datasources
+  sl.registerLazySingleton<CopyrightDatasources>(
+      () => CopyrightDatasourcesImpl(firebase: sl()));
 
   // External
   final firebase = FirebaseFirestore.instance;
