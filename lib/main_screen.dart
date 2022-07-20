@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_profile/features/certifications/presentation/pages/certifications_page.dart';
 import 'package:my_profile/features/contact/persentation/page/contact_page.dart';
+import 'package:my_profile/features/copyright/persentaion/page/copyright_page.dart';
 
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_page.dart';
@@ -71,7 +72,7 @@ class MainScreen extends StatelessWidget {
           blocObserver: MyBlocObserver(),
         ),
         BlocProvider(
-          create: (_) => di.sl<CopyrightBloc>(),
+          create: (_) => di.sl<CopyrightBloc>()..add(CopyRightGetDataEvent()),
         ),
       ],
       child: Scaffold(
@@ -83,6 +84,7 @@ class MainScreen extends StatelessWidget {
             CertificationsPage(),
             ProjectPage(),
             ContactPage(),
+            CopyrightPage(),
           ],
         ),
       ),
