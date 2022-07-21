@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/animation_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/utils/snackbar_message.dart';
+import '../../../../core/widget/animation_image_loading.dart';
 import '../../domain/entities/project.dart';
 
 class ItmeProject extends StatelessWidget {
@@ -89,29 +91,91 @@ class ItmeProject extends StatelessWidget {
                 const SizedBox(width: 40),
                 ...List.generate(
                   data.infos.length,
-                  (index) => InkWell(
-                    onTap: () async {
-                      try {
-                        final Uri url = Uri.parse(data.infos[index].url);
-                        if (!await launchUrl(url)) {
-                          throw 'Could not launch $url';
-                        }
-                      } catch (e) {
-                        SnakBarMessage.showErrorSnackBar(
-                            message: e.toString(), context: context);
-                      }
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: CircleAvatar(
-                        radius: 18,
-                        child: Image.network(
+                  (index) => 1 == 1
+                      ? Image.network(
                           data.infos[index].icon,
                           fit: BoxFit.fill,
+                          errorBuilder: (ctx, _, __) =>
+                              Image.asset("assets/images/idea.png"),
+                          loadingBuilder: (_, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return AnimationIcon(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: CircleAvatar(
+                                    radius: 18,
+                                    child: child,
+                                  ),
+                                ),
+                                onTap: () async {
+                                  try {
+                                    final Uri url =
+                                        Uri.parse(data.infos[index].url);
+                                    if (!await launchUrl(url)) {
+                                      throw 'Could not launch $url';
+                                    }
+                                  } catch (e) {
+                                    SnakBarMessage.showErrorSnackBar(
+                                        message: e.toString(),
+                                        context: context);
+                                  }
+                                },
+                              );
+                            }
+                            return AnimationImageLoading(
+                                width: 50,
+                                height: 50,
+                                child: AnimationIcon(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: CircleAvatar(
+                                      radius: 18,
+                                      child: Container(),
+                                    ),
+                                  ),
+                                  onTap: () async {
+                                    try {
+                                      final Uri url =
+                                          Uri.parse(data.infos[index].url);
+                                      if (!await launchUrl(url)) {
+                                        throw 'Could not launch $url';
+                                      }
+                                    } catch (e) {
+                                      SnakBarMessage.showErrorSnackBar(
+                                          message: e.toString(),
+                                          context: context);
+                                    }
+                                  },
+                                ));
+                          },
+                        )
+                      : AnimationIcon(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: CircleAvatar(
+                              radius: 18,
+                              child: Image.network(
+                                data.infos[index].icon,
+                                fit: BoxFit.fill,
+                                errorBuilder: (ctx, _, __) =>
+                                    Image.asset("assets/images/idea.png"),
+                              ),
+                            ),
+                          ),
+                          onTap: () async {
+                            try {
+                              final Uri url = Uri.parse(data.infos[index].url);
+                              if (!await launchUrl(url)) {
+                                throw 'Could not launch $url';
+                              }
+                            } catch (e) {
+                              SnakBarMessage.showErrorSnackBar(
+                                  message: e.toString(), context: context);
+                            }
+                          },
                         ),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),
@@ -127,6 +191,7 @@ class ItmeProject extends StatelessWidget {
       child: Image.network(
         data.image,
         fit: BoxFit.fill,
+        errorBuilder: (ctx, _, __) => Image.asset("assets/images/project.png"),
       ),
     );
   }

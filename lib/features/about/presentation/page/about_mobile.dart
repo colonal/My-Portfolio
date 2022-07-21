@@ -14,38 +14,36 @@ class AbouitMobile extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return CountPage(
       countText: "01",
-      child: (context, size) => Expanded(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-          child: Column(
-            children: [
-              SizedBox(
-                height: size.height * 0.33,
-                child: ImageWidgetMobil(img: data.image, size: size),
-              ),
-              SizedBox(
-                height: size.height * 0.33,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: AutoSizeText(
-                    data.summary.replaceAll("\\n", "\n\n"),
-                    minFontSize: 13,
-                    style: theme.textTheme.headline3,
-                  ),
+      child: (context, size) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.33,
+              child: ImageWidgetMobil(img: data.image, size: size),
+            ),
+            SizedBox(
+              height: size.height * 0.33,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: AutoSizeText(
+                  data.summary.replaceAll("\\n", "\n\n"),
+                  minFontSize: 13,
+                  style: theme.textTheme.headline3,
                 ),
               ),
-              SizedBox(
-                  height: size.height * 0.33,
-                  width: size.width,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: AboutDetailsWidgetMobile(
-                      data: data,
-                      size: Size(size.width, size.height * 0.3),
-                    ),
-                  )),
-            ],
-          ),
+            ),
+            SizedBox(
+                height: size.height * 0.33,
+                width: size.width,
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: AboutDetailsWidgetMobile(
+                    data: data,
+                    size: Size(size.width, size.height * 0.3),
+                  ),
+                )),
+          ],
         ),
       ),
     );

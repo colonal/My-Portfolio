@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/animation_image_loading.dart';
 
 import '../../../../core/theme/app_color.dart';
 import '../../domain/entities/home.dart';
@@ -42,22 +43,52 @@ class ContentWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: imgSize.width,
-                      height: imgSize.height,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: NetworkImage(data.image),
-                            fit: BoxFit.cover,
+                    Image.network(
+                      data.image,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) =>
+                          Image.asset("assets/images/user.png"),
+                      loadingBuilder: ((context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return Container(
+                            width: imgSize.width,
+                            height: imgSize.height,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: NetworkImage(data.image),
+                                  fit: BoxFit.cover,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xffCBC7BF)
+                                        .withOpacity(0.2),
+                                    offset: const Offset(10, 10),
+                                    blurRadius: 6,
+                                  ),
+                                ]),
+                          );
+                        }
+                        return AnimationImageLoading(
+                          width: imgSize.width,
+                          height: imgSize.height,
+                          isCircle: true,
+                          child: Container(
+                            width: imgSize.width,
+                            height: imgSize.height,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0xffCBC7BF)
+                                        .withOpacity(0.2),
+                                    offset: const Offset(10, 10),
+                                    blurRadius: 6,
+                                  ),
+                                ]),
                           ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0xffCBC7BF).withOpacity(0.2),
-                              offset: const Offset(10, 10),
-                              blurRadius: 6,
-                            ),
-                          ]),
+                        );
+                      }),
                     ),
                     const SizedBox(height: 50),
                     AutoSizeText(

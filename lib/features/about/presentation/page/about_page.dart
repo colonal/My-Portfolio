@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/utils/loding_widget.dart';
+import 'package:my_profile/core/widget/loding_widget.dart';
 import 'package:my_profile/features/about/presentation/page/about_mobile.dart';
 
 import '../../../../core/widget/screen_helper.dart';

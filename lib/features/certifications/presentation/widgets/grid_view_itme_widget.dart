@@ -31,6 +31,8 @@ class GridViewItmeWidget extends StatelessWidget {
                 child: Image.network(
                   data.companyImage,
                   fit: BoxFit.fill,
+                  errorBuilder: (_, __, ___) =>
+                      Image.asset("assets/images/certification.png"),
                 ),
               ),
             ),

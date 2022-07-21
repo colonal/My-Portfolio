@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/app_color.dart';
@@ -21,16 +20,14 @@ class TitlePage extends StatelessWidget {
       crossAxisAlignment:
           isCenter ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
-        AutoSizeText(
+        Text(
           subTitle,
           style:
               theme.textTheme.headline3!.copyWith(fontWeight: FontWeight.bold),
-          maxFontSize: theme.textTheme.headline1!.fontSize!,
         ),
-        AutoSizeText(
+        Text(
           title,
           style: theme.textTheme.headline1,
-          maxFontSize: theme.textTheme.headline1!.fontSize!,
         ),
         Container(
           color: AppColor.textColorDark,

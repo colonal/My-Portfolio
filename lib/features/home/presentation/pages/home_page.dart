@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_desktop.dart';
-import 'package:my_profile/core/utils/loding_widget.dart';
+import 'package:my_profile/core/widget/loding_widget.dart';
 
 import 'home_mobile.dart';
 

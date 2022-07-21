@@ -5,11 +5,13 @@ class AnimationImageLoading extends StatefulWidget {
   final Widget child;
   final double width;
   final double height;
+  final bool isCircle;
 
   const AnimationImageLoading(
       {required this.child,
       required this.width,
       required this.height,
+      this.isCircle = false,
       Key? key})
       : super(key: key);
 
@@ -45,6 +47,7 @@ class _AnimationImageLoadingState extends State<AnimationImageLoading>
       width: widget.width,
       height: widget.height,
       decoration: BoxDecoration(
+        shape: widget.isCircle ? BoxShape.circle : BoxShape.rectangle,
         border: Border.all(color: Colors.transparent, width: 10),
       ),
       child: Stack(

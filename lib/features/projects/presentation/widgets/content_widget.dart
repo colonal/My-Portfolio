@@ -28,8 +28,8 @@ class ContentPage extends StatelessWidget {
               child: const FittedBox(
                 fit: BoxFit.scaleDown,
                 child: TitlePage(
-                  title: "Certifications",
-                  subTitle: "My Certifications",
+                  title: "My Projects",
+                  subTitle: "Recent Works",
                   isCenter: true,
                 ),
               ),

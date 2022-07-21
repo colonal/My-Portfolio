@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/utils/snackbar_message.dart';
+import 'package:my_profile/core/widget/animation_icon.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/about/domain/entities/social_media.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,7 @@ class SocilMediaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return InkWell(
+    return AnimationIcon(
       onTap: () async {
         try {
           final Uri url = Uri.parse(itme.url);
@@ -25,7 +26,6 @@ class SocilMediaWidget extends StatelessWidget {
       },
       child: ScreenHelper.isMobile(context)
           ? Container(
-              // backgroundImage: AssetImage(itme.icon),
               height: height * 0.8,
               width: height * 0.8,
               decoration: BoxDecoration(

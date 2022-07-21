@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/utils/loding_widget.dart';
+import 'package:my_profile/core/widget/loding_widget.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
 import 'package:my_profile/features/skills/presentation/pages/skills_desktop.dart';

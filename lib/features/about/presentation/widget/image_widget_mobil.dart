@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/features/about/presentation/widget/animation_image_loading.dart';
+import 'package:my_profile/core/widget/animation_image_loading.dart';
 
 import '../../../../core/widget/title_page.dart';
 
@@ -19,47 +19,12 @@ class ImageWidgetMobil extends StatelessWidget {
       alignment: const FractionalOffset(1, 0.1),
       filterQuality: FilterQuality.low,
       scale: 1.5,
+      errorBuilder: (_, __, ___) {
+        return _buildStyleImage(size: size, theme: theme);
+      },
       loadingBuilder: ((context, child, loadingProgress) {
         if (loadingProgress == null) {
-          return Stack(
-            children: [
-              Container(
-                height: size.height * 0.30,
-                decoration: BoxDecoration(
-                  border: Border.all(color: theme.primaryColorDark, width: 10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      offset: const Offset(0, 3),
-                      blurRadius: 6,
-                    ),
-                  ],
-                ),
-                width: double.infinity,
-                child: child,
-              ),
-              Container(
-                height: size.height * 0.30,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Colors.black.withOpacity(0.6),
-                    Colors.black.withOpacity(0.6),
-                  ]),
-                ),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    padding: const EdgeInsets.all(25),
-                    child: const TitlePage(
-                      title: "About Me",
-                      subTitle: "Discver",
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );
+          return _buildStyleImage(size: size, theme: theme, child: child);
         }
         return AnimationImageLoading(
           width: double.infinity,
@@ -84,4 +49,49 @@ class ImageWidgetMobil extends StatelessWidget {
       }),
     );
   }
+}
+
+_buildStyleImage(
+    {required Size size, required ThemeData theme, Widget? child}) {
+  return Stack(
+    children: [
+      Container(
+        height: size.height * 0.30,
+        decoration: BoxDecoration(
+          border: Border.all(color: theme.primaryColorDark, width: 10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              offset: const Offset(0, 3),
+              blurRadius: 6,
+            ),
+          ],
+        ),
+        width: double.infinity,
+        child: child ?? Container(),
+      ),
+      Container(
+        height: size.height * 0.30,
+        width: double.infinity,
+        alignment: Alignment.topLeft,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Colors.black.withOpacity(0.6),
+            Colors.black.withOpacity(0.6),
+          ]),
+        ),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            alignment: Alignment.topLeft,
+            padding: const EdgeInsets.all(25),
+            child: const TitlePage(
+              title: "About Me",
+              subTitle: "Discver",
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }
