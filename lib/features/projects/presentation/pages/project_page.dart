@@ -6,6 +6,8 @@ import 'package:my_profile/features/projects/presentation/bloc/project_bloc.dart
 import 'package:my_profile/features/projects/presentation/pages/project_desktop.dart';
 import 'package:my_profile/features/projects/presentation/pages/project_mobile.dart';
 
+import '../../../../core/widget/no_internet.dart';
+
 class ProjectPage extends StatelessWidget {
   const ProjectPage({Key? key}) : super(key: key);
 
@@ -25,7 +27,12 @@ class ProjectPage extends StatelessWidget {
             );
           }
           if (state is ProjectErrorState) {
-            print("ProjectErrorState error: ${state.message}");
+            return NoInternet(
+              onPressed: () {
+                BlocProvider.of<ProjectBloc>(context)
+                    .add(ProjectGetDataEvent());
+              },
+            );
           }
           return const LodingWidget();
         },

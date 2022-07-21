@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_profile/core/widget/no_internet.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
 import 'package:my_profile/features/home/presentation/pages/home_desktop.dart';
@@ -26,7 +27,14 @@ class HomePage extends StatelessWidget {
               mobile: HomeMobile(data: state.data),
             );
           }
-          if (state is HomeFailureDataState) print("message: " + state.message);
+          if (state is HomeFailureDataState) {
+            return NoInternet(
+              onPressed: () {
+                BlocProvider.of<HomeBloc>(context).add(HomeGetDataEvent());
+              },
+            );
+          }
+
           return const LodingWidget();
         },
       ),

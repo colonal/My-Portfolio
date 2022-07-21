@@ -17,6 +17,27 @@ class ImageWidgetDesktop extends StatelessWidget {
           img,
           fit: BoxFit.fill,
           filterQuality: FilterQuality.low,
+          errorBuilder: (_, __, ___) {
+            return FittedBox(
+              fit: BoxFit.contain,
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(60),
+                decoration: BoxDecoration(
+                  color: theme.primaryColorDark,
+                  border: Border.all(color: theme.primaryColorDark, width: 15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      offset: const Offset(0, 3),
+                      blurRadius: 6,
+                    ),
+                  ],
+                ),
+                child: Container(),
+              ),
+            );
+          },
           loadingBuilder: (BuildContext context, Widget child,
               ImageChunkEvent? loadingProgress) {
             if (loadingProgress == null) {

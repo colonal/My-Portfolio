@@ -18,23 +18,21 @@ class CountPage extends StatelessWidget {
       width: size.width,
       height: size.height,
       child: ScreenHelper.isDesktop(context)
-          ? 1 == 2
-              ? _countWidget(theme, size)
-              : Stack(
-                  children: [
-                    FittedBox(
-                        fit: BoxFit.cover,
-                        child: SizedBox(
-                            width: size.width,
-                            height: size.height,
-                            child: child(context, size))),
-                    Positioned(
-                      right: 0,
-                      top: 30,
-                      child: _countWidget(theme, size),
-                    ),
-                  ],
-                )
+          ? Stack(
+              children: [
+                FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                        width: size.width,
+                        height: size.height,
+                        child: child(context, size))),
+                Positioned(
+                  right: 0,
+                  top: 30,
+                  child: _countWidget(theme, size),
+                ),
+              ],
+            )
           : Column(
               children: [
                 Container(

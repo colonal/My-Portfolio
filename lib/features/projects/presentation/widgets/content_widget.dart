@@ -14,7 +14,7 @@ class ContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CountPage(
-      countText: "03",
+      countText: "04",
       child: (context, size) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

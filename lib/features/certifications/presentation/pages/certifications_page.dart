@@ -6,6 +6,8 @@ import 'package:my_profile/features/certifications/presentation/bloc/certificati
 import 'package:my_profile/features/certifications/presentation/pages/certifications_desktop.dart';
 import 'package:my_profile/features/certifications/presentation/pages/certifications_mobile.dart';
 
+import '../../../../core/widget/no_internet.dart';
+
 class CertificationsPage extends StatelessWidget {
   const CertificationsPage({Key? key}) : super(key: key);
 
@@ -24,7 +26,14 @@ class CertificationsPage extends StatelessWidget {
               mobile: CertificationsMobile(data: state.data),
             );
           }
-          if (state is CertificationsErrorStete) {}
+          if (state is CertificationsErrorStete) {
+            return NoInternet(
+              onPressed: () {
+                BlocProvider.of<CertificationsBloc>(context)
+                    .add(CertificationsGetDataEvent());
+              },
+            );
+          }
           return const LodingWidget();
         },
       ),

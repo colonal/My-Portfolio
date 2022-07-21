@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_profile/core/widget/loding_widget.dart';
 import 'package:my_profile/features/about/presentation/page/about_mobile.dart';
 
+import '../../../../core/widget/no_internet.dart';
 import '../../../../core/widget/screen_helper.dart';
 import '../bloc/about_bloc.dart';
 import 'about_desktop.dart';
@@ -24,6 +25,13 @@ class AboutPage extends StatelessWidget {
             return ScreenHelper(
               desktop: AboutDesktop(data: state.data),
               mobile: AbouitMobile(data: state.data),
+            );
+          }
+          if (state is AboutFailuerState) {
+            return NoInternet(
+              onPressed: () {
+                BlocProvider.of<AboutBloc>(context).add(AboutGetDataEvent());
+              },
             );
           }
           return const LodingWidget();

@@ -16,7 +16,7 @@ class CopyrightPage extends StatelessWidget {
           return ContentContact(data: state.data);
         }
         if (state is CopyrightErrorState) {
-          print("Error: ${state.message}");
+          return Container();
         }
         return const LodingWidget();
       },

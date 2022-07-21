@@ -90,9 +90,8 @@ class ItmeProject extends StatelessWidget {
                 ),
                 const SizedBox(width: 40),
                 ...List.generate(
-                  data.infos.length,
-                  (index) => 1 == 1
-                      ? Image.network(
+                    data.infos.length,
+                    (index) => Image.network(
                           data.infos[index].icon,
                           fit: BoxFit.fill,
                           errorBuilder: (ctx, _, __) =>
@@ -126,6 +125,7 @@ class ItmeProject extends StatelessWidget {
                             return AnimationImageLoading(
                                 width: 50,
                                 height: 50,
+                                isCircle: true,
                                 child: AnimationIcon(
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -150,33 +150,7 @@ class ItmeProject extends StatelessWidget {
                                   },
                                 ));
                           },
-                        )
-                      : AnimationIcon(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: CircleAvatar(
-                              radius: 18,
-                              child: Image.network(
-                                data.infos[index].icon,
-                                fit: BoxFit.fill,
-                                errorBuilder: (ctx, _, __) =>
-                                    Image.asset("assets/images/idea.png"),
-                              ),
-                            ),
-                          ),
-                          onTap: () async {
-                            try {
-                              final Uri url = Uri.parse(data.infos[index].url);
-                              if (!await launchUrl(url)) {
-                                throw 'Could not launch $url';
-                              }
-                            } catch (e) {
-                              SnakBarMessage.showErrorSnackBar(
-                                  message: e.toString(), context: context);
-                            }
-                          },
-                        ),
-                ),
+                        )),
               ],
             ),
           ],

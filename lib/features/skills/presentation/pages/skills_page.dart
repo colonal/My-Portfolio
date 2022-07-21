@@ -5,6 +5,7 @@ import 'package:my_profile/core/widget/screen_helper.dart';
 import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
 import 'package:my_profile/features/skills/presentation/pages/skills_desktop.dart';
 
+import '../../../../core/widget/no_internet.dart';
 import 'skills_mobile.dart';
 
 class SkilsPage extends StatelessWidget {
@@ -23,6 +24,13 @@ class SkilsPage extends StatelessWidget {
             return ScreenHelper(
               desktop: SkillsDesktop(data: state.data),
               mobile: SkillsMobile(data: state.data),
+            );
+          }
+          if (state is ErrorSkillsState) {
+            return NoInternet(
+              onPressed: () {
+                BlocProvider.of<SkillsBloc>(context).add(GetDataSkillsEvent());
+              },
             );
           }
           return const LodingWidget();
