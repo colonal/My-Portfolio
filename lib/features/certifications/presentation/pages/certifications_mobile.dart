@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/certifications/presentation/widgets/grid_view_itme_widget.dart';
 import '../../domain/entities/certifications.dart';
 import '../widgets/content_widget.dart';
@@ -22,8 +23,10 @@ class CertificationsMobile extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
         padding: const EdgeInsets.only(bottom: 20),
-        itemBuilder: (context, index) =>
-            GridViewItmeWidget(data: data[index], isDesktop: true),
+        itemBuilder: (context, index) => FadeAnimation(
+            offset: const Offset(0, -1),
+            duration: const Duration(seconds: 2),
+            child: GridViewItmeWidget(data: data[index], isDesktop: true)),
       ),
     );
   }

@@ -35,8 +35,7 @@ class ContentWidget extends StatelessWidget {
               ),
             ),
             SingleChildScrollView(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 1),
+              child: SizedBox(
                 width: size.width,
                 height: size.height * 0.8,
                 child: child,

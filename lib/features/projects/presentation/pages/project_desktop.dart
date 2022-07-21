@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/projects/domain/entities/project.dart';
 import '../widgets/content_widget.dart';
 import '../widgets/itme_project.dart';
@@ -22,7 +23,10 @@ class PageDesktop extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
         padding: const EdgeInsets.only(bottom: 20),
-        itemBuilder: (context, index) => ItmeProject(data: data[index]),
+        itemBuilder: (context, index) => FadeAnimation(
+            offset: Offset(-1.0 * index, 0),
+            duration: const Duration(seconds: 2),
+            child: ItmeProject(data: data[index])),
       ),
     );
   }

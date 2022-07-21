@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/copyright/domain/entities/copyright.dart';
 import 'package:my_profile/features/copyright/domain/entities/social_madia.dart';
 
@@ -18,44 +19,48 @@ class ContentContact extends StatelessWidget {
         height: 150,
         width: size.width / 0.5,
         color: theme.primaryColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    data.socialMedia.length,
-                    (index) => SocialmediaItmeWidget(
-                      socialMedia: data.socialMedia[index],
+        child: FadeAnimation(
+          offset: const Offset(0, 2),
+          duration: const Duration(seconds: 1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      data.socialMedia.length,
+                      (index) => SocialmediaItmeWidget(
+                        socialMedia: data.socialMedia[index],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: Text.rich(
-                  TextSpan(
-                    text: data.messages,
-                    style: theme.textTheme.headline6,
-                    children: [
-                      TextSpan(
-                        text: " ${data.name}",
-                        style: theme.textTheme.headline6!.copyWith(
-                          color: theme.textTheme.headline1!.color,
-                          fontWeight: FontWeight.bold,
+              Expanded(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text.rich(
+                    TextSpan(
+                      text: data.messages,
+                      style: theme.textTheme.headline6,
+                      children: [
+                        TextSpan(
+                          text: " ${data.name}",
+                          style: theme.textTheme.headline6!.copyWith(
+                            color: theme.textTheme.headline1!.color,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

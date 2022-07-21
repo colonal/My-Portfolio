@@ -19,6 +19,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
   bool isLoading = false;
   bool isDone = false;
   bool isError = false;
+  bool isHover = false;
 
   late AnimationController controller;
   late Animation<Offset> offset;
@@ -55,7 +56,9 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
         width: 200,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
-            color: Theme.of(context).textTheme.headline1!.color,
+            color: isHover
+                ? Theme.of(context).primaryColorDark
+                : Theme.of(context).textTheme.headline1!.color,
             borderRadius: BorderRadius.circular(isSend ? 0 : 8),
             border: isSend
                 ? null
@@ -97,6 +100,14 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
           },
           // minWidth: isDesktop ? 200 : 150,
           hoverColor: Theme.of(context).primaryColorDark,
+          onHover: (value) {
+            if (value) {
+              isHover = !isHover;
+            } else {
+              isHover = !isHover;
+            }
+            setState(() {});
+          },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             width: isSend ? 200 : null,

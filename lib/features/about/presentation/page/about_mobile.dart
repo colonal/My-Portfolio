@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/count_page.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/about/domain/entities/about.dart';
 import 'package:my_profile/features/about/presentation/widget/about_details_widget_mobile.dart';
 import 'package:my_profile/features/about/presentation/widget/image_widget_mobil.dart';
@@ -18,31 +19,43 @@ class AbouitMobile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
         child: Column(
           children: [
-            SizedBox(
-              height: size.height * 0.33,
-              child: ImageWidgetMobil(img: data.image, size: size),
+            FadeAnimation(
+              offset: const Offset(-20, 0),
+              duration: const Duration(seconds: 1),
+              child: SizedBox(
+                height: size.height * 0.33,
+                child: ImageWidgetMobil(img: data.image, size: size),
+              ),
             ),
-            SizedBox(
-              height: size.height * 0.33,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: AutoSizeText(
-                  data.summary.replaceAll("\\n", "\n\n"),
-                  minFontSize: 13,
-                  style: theme.textTheme.headline3,
+            FadeAnimation(
+              offset: const Offset(20, 0),
+              duration: const Duration(seconds: 2),
+              child: SizedBox(
+                height: size.height * 0.33,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: AutoSizeText(
+                    data.summary.replaceAll("\\n", "\n\n"),
+                    minFontSize: 13,
+                    style: theme.textTheme.headline3,
+                  ),
                 ),
               ),
             ),
-            SizedBox(
-                height: size.height * 0.33,
-                width: size.width,
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: AboutDetailsWidgetMobile(
-                    data: data,
-                    size: Size(size.width, size.height * 0.3),
-                  ),
-                )),
+            FadeAnimation(
+              offset: const Offset(0, 20),
+              duration: const Duration(seconds: 3),
+              child: SizedBox(
+                  height: size.height * 0.33,
+                  width: size.width,
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: AboutDetailsWidgetMobile(
+                      data: data,
+                      size: Size(size.width, size.height * 0.3),
+                    ),
+                  )),
+            ),
           ],
         ),
       ),

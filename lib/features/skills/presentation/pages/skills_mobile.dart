@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/count_page.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/skills/presentation/widget/skills_itme_mobile_widget.dart';
 
 import '../../../../core/widget/title_page.dart';
@@ -22,15 +23,17 @@ class SkillsMobile extends StatelessWidget {
                 fit: BoxFit.cover,
                 child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: TitlePage(
-                    title: "My Skills",
-                    subTitle: "My Awesome Skills",
-                    isCenter: true,
+                  child: OpacityAnimation(
+                    duration: Duration(seconds: 2),
+                    child: TitlePage(
+                      title: "My Skills",
+                      subTitle: "My Awesome Skills",
+                      isCenter: true,
+                    ),
                   ),
                 ),
               ),
             ),
-            // const SizedBox(height: 30),
             SizedBox(
               height: size.height * 0.9,
               width: size.width,
@@ -42,9 +45,13 @@ class SkillsMobile extends StatelessWidget {
                       data.length,
                       (index) => SizedBox(
                             width: size.width,
-                            child: SkillsItmeMobileWidget(
-                              data: data[index],
-                              showDivider: data.length - 1 != index,
+                            child: FadeAnimation(
+                              offset: Offset(-1.0 * index, 0),
+                              duration: const Duration(seconds: 2),
+                              child: SkillsItmeMobileWidget(
+                                data: data[index],
+                                showDivider: data.length - 1 != index,
+                              ),
                             ),
                           )),
                 ),

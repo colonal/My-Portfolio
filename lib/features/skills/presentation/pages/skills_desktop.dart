@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/count_page.dart';
+import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/core/widget/title_page.dart';
 import 'package:my_profile/features/skills/presentation/widget/Skills_itme_desktop_widget.dart';
 
@@ -17,19 +18,27 @@ class SkillsDesktop extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const TitlePage(
-              title: "My Skills",
-              subTitle: "My Awesome Skills",
-              isCenter: true,
+            const OpacityAnimation(
+              duration: Duration(seconds: 2),
+              child: TitlePage(
+                title: "My Skills",
+                subTitle: "My Awesome Skills",
+                isCenter: true,
+              ),
             ),
             const SizedBox(height: 40),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: List.generate(
                   data.length,
-                  (index) => SkillsItmeDesktopWidget(data: data[index]),
+                  (index) => FadeAnimation(
+                      offset: Offset(-1.0 * index, 0),
+                      duration: const Duration(seconds: 2),
+                      child: Align(
+                          alignment: Alignment.topCenter,
+                          child: SkillsItmeDesktopWidget(data: data[index]))),
                 ),
               ),
             ),
