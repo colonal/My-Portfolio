@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_profile/core/widget/screen_helper.dart';
+import 'package:my_profile/core/widget/top_bar/drawer_widget.dart';
+import 'package:my_profile/core/widget/top_bar/top_bar.dart';
+import 'package:my_profile/core/widget/top_bar/top_bar_itme.dart';
 import 'package:my_profile/features/certifications/presentation/pages/certifications_page.dart';
 import 'package:my_profile/features/contact/persentation/page/contact_page.dart';
 import 'package:my_profile/features/copyright/persentaion/page/copyright_page.dart';
@@ -19,11 +24,42 @@ import 'features/contact/persentation/bloc/contact_bloc.dart';
 import 'features/copyright/persentaion/bloc/copyright_bloc.dart';
 import 'ingection_container.dart' as di;
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  late ScrollController controller;
+  final GlobalKey<ScaffoldState> key = GlobalKey();
+  bool isScrollUp = true;
+  @override
+  void initState() {
+    controller = ScrollController();
+
+    super.initState();
+    controller.addListener(() {
+      if (controller.position.userScrollDirection == ScrollDirection.reverse) {
+        isScrollUp = false;
+      }
+      if (controller.position.userScrollDirection == ScrollDirection.forward) {
+        isScrollUp = true;
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final bool isDesktop = ScreenHelper.isDesktop(context);
     return MultiBlocProvider(
       providers: [
         BlocOverrides.runZoned(
@@ -76,17 +112,64 @@ class MainScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        body: ListView(
-          children: const [
-            HomePage(),
-            AboutPage(),
-            SkilsPage(),
-            CertificationsPage(),
-            ProjectPage(),
-            ContactPage(),
-            CopyrightPage(),
+        key: key,
+        body: Stack(
+          children: [
+            ListView(
+              controller: controller,
+              shrinkWrap: true,
+              children: const [
+                HomePage(),
+                AboutPage(),
+                SkilsPage(),
+                CertificationsPage(),
+                ProjectPage(),
+                ContactPage(),
+                CopyrightPage(),
+              ],
+            ),
+            if (!isDesktop)
+              Positioned(
+                  child: IconButton(
+                      onPressed: () => key.currentState!.openDrawer(),
+                      icon: const Icon(Icons.dehaze_rounded,
+                          color: Colors.white))),
+            if (isDesktop)
+              Positioned(
+                top: 5,
+                right: 5,
+                child: TopBar(
+                  isScrollUp: isScrollUp,
+                  onTap: (index) {
+                    controller.animateTo(
+                      index * MediaQuery.of(context).size.height,
+                      duration: const Duration(milliseconds: 700),
+                      curve: Curves.fastOutSlowIn,
+                    );
+
+                    if (index != 0) {
+                      Future.delayed(const Duration(milliseconds: 800), () {
+                        setState(() {
+                          isScrollUp = false;
+                        });
+                      });
+                    }
+                  },
+                ),
+              )
           ],
         ),
+        drawer: !isDesktop
+            ? DrawerWidget(
+                onTap: (index) {
+                  controller.animateTo(
+                    index * MediaQuery.of(context).size.height,
+                    duration: const Duration(milliseconds: 700),
+                    curve: Curves.fastOutSlowIn,
+                  );
+                },
+              )
+            : null,
       ),
     );
   }
