@@ -7,8 +7,8 @@ List<String> topBar = [
   "Home",
   "About",
   "Skills",
-  "Project",
   "Certifications",
+  "Project",
   "Contact Me"
 ];
 

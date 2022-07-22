@@ -17,7 +17,9 @@ class ItmeProject extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Container(
-      width: 700,
+      width: isDesktop
+          ? MediaQuery.of(context).size.width * 0.45
+          : MediaQuery.of(context).size.width * 0.9,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         border: Border.all(
@@ -46,7 +48,6 @@ class ItmeProject extends StatelessWidget {
     return Expanded(
       flex: 4,
       child: SizedBox(
-        height: 700,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -94,8 +95,9 @@ class ItmeProject extends StatelessWidget {
                     (index) => Image.network(
                           data.infos[index].icon,
                           fit: BoxFit.fill,
-                          errorBuilder: (ctx, _, __) =>
-                              Image.asset("assets/images/idea.png"),
+                          errorBuilder: (ctx, _, __) => CircleAvatar(
+                              radius: 18,
+                              child: Image.asset("assets/images/idea.png")),
                           loadingBuilder: (_, child, loadingProgress) {
                             if (loadingProgress == null) {
                               return AnimationIcon(

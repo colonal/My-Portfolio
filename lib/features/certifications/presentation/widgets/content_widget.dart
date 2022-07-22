@@ -3,13 +3,10 @@ import 'package:my_profile/core/widget/count_page.dart';
 import 'package:my_profile/core/widget/screen_helper.dart';
 
 import '../../../../core/widget/title_page.dart';
-import '../../domain/entities/certifications.dart';
 
 class ContentWidget extends StatelessWidget {
-  final List<Certifications> data;
-  final Widget child;
-  const ContentWidget({required this.data, required this.child, Key? key})
-      : super(key: key);
+  final Widget Function(BuildContext, Size) child;
+  const ContentWidget({required this.child, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class ContentWidget extends StatelessWidget {
               child: SizedBox(
                 width: size.width,
                 height: size.height * 0.8,
-                child: child,
+                child: child(context, Size(size.width, size.height * 0.8)),
               ),
             ),
           ],

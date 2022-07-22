@@ -1,33 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:my_profile/core/widget/fade_animation.dart';
 import 'package:my_profile/features/projects/presentation/widgets/content_widget.dart';
+import '../../../../core/widget/count_widget.dart';
 import '../../domain/entities/project.dart';
 import '../widgets/itme_project.dart';
 
-class ProjectMobile extends StatelessWidget {
+class ProjectMobile extends StatefulWidget {
   final List<Project> data;
   const ProjectMobile({required this.data, Key? key}) : super(key: key);
 
   @override
+  State<ProjectMobile> createState() => _ProjectMobileState();
+}
+
+class _ProjectMobileState extends State<ProjectMobile> {
+  late PageController controller;
+  int select = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PageController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return ContentPage(
-      data: data,
-      child: GridView.builder(
-        itemCount: data.length,
-        scrollDirection: Axis.vertical,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          mainAxisExtent: 250,
-          crossAxisSpacing: size.height * 0.1,
-          mainAxisSpacing: 20,
-        ),
-        padding: const EdgeInsets.only(bottom: 20),
-        itemBuilder: (context, index) => FadeAnimation(
-            offset: Offset(-1.0 * index, 0),
-            duration: const Duration(seconds: 2),
-            child: ItmeProject(data: data[index], isDesktop: false)),
+      child: (context, size) => Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              controller: controller,
+              itemCount: (widget.data.length / 2).ceil(),
+              onPageChanged: (int index) {
+                setState(() {
+                  select = index;
+                });
+              },
+              itemBuilder: (context, index) => SizedBox(
+                width: size.width,
+                height: size.height * 0.8,
+                child: Column(
+                  children: [
+                    Expanded(child: newMethod(index * 2)),
+                    Expanded(child: newMethod(index * 2 + 1)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          CountWidget(
+              length: (widget.data.length / 2).ceil(),
+              select: select,
+              isMobile: true,
+              onTap: (index) {
+                controller.animateToPage(index,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.linear);
+              })
+        ],
       ),
     );
+  }
+
+  Widget newMethod(int count) {
+    return count < widget.data.length
+        ? Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: FadeAnimation(
+              offset: const Offset(0, 1),
+              duration: Duration(milliseconds: (count + 6) * 100),
+              child: ItmeProject(data: widget.data[count], isDesktop: false),
+            ),
+          )
+        : Container();
   }
 }
