@@ -130,14 +130,16 @@ class _MainScreenState extends State<MainScreen> {
             ),
             if (!isDesktop)
               Positioned(
+                  top: 5,
+                  left: 5,
                   child: IconButton(
                       onPressed: () => key.currentState!.openDrawer(),
                       icon: const Icon(Icons.dehaze_rounded,
                           color: Colors.white))),
             if (isDesktop)
               Positioned(
-                top: 5,
-                right: 5,
+                top: 0,
+                right: 0,
                 child: TopBar(
                   isScrollUp: isScrollUp,
                   onTap: (index) {
