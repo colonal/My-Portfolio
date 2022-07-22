@@ -48,8 +48,24 @@ class ContentWidget extends StatelessWidget {
                       child: Image.network(
                         data.image,
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
-                            Image.asset("assets/images/user.png"),
+                        errorBuilder: (_, __, ___) => Container(
+                          width: imgSize.width,
+                          height: imgSize.height,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: const DecorationImage(
+                                image: AssetImage("assets/images/user.png"),
+                                fit: BoxFit.cover,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color:
+                                      const Color(0xffCBC7BF).withOpacity(0.2),
+                                  offset: const Offset(10, 10),
+                                  blurRadius: 6,
+                                ),
+                              ]),
+                        ),
                         loadingBuilder: ((context, child, loadingProgress) {
                           if (loadingProgress == null) {
                             return Container(
