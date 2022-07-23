@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/skills/data/datasources/skills_remote_data_source.dart';
-import 'package:my_profile/features/skills/domin/entites/skills.dart';
-import 'package:my_profile/features/skills/domin/repositories/skills_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../datasources/skills_remote_data_source.dart';
+import '../../domin/entites/skills.dart';
+import '../../domin/repositories/skills_repositories.dart';
 
 class SkillsRrepositoriesImpl extends SkillsRepositories {
   final SkillsRemoteDataSource source;

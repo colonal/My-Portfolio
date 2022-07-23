@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/contact/domain/entities/contact.dart';
-import 'package:my_profile/features/contact/domain/repositories/contact_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/contact.dart';
+import '../repositories/contact_repositories.dart';
 
 class AddContactUsecase {
   final ContactRepositories repositories;

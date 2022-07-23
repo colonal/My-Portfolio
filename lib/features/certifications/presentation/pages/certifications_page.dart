@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/loding_widget.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/certifications/presentation/bloc/certifications_bloc.dart';
-import 'package:my_profile/features/certifications/presentation/pages/certifications_desktop.dart';
-import 'package:my_profile/features/certifications/presentation/pages/certifications_mobile.dart';
+import '../../../../core/widget/page/loading_widget.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../bloc/certifications_bloc.dart';
+import 'certifications_desktop.dart';
+import 'certifications_mobile.dart';
 
-import '../../../../core/widget/no_internet.dart';
+import '../../../../core/widget/page/no_internet.dart';
 
 class CertificationsPage extends StatelessWidget {
   const CertificationsPage({Key? key}) : super(key: key);

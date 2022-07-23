@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/loding_widget.dart';
-import 'package:my_profile/features/about/presentation/page/about_mobile.dart';
 
-import '../../../../core/widget/no_internet.dart';
-import '../../../../core/widget/screen_helper.dart';
+import '../../../../core/widget/page/loading_widget.dart';
+import '../../../../core/widget/page/no_internet.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
 import '../bloc/about_bloc.dart';
 import 'about_desktop.dart';
+import 'about_mobile.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);

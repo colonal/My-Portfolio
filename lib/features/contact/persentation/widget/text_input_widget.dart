@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
 
 class TextInputWidget extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool multiLine;
-  final bool isDesktop;
   final TextInputType textInputType;
   const TextInputWidget(
       {required this.controller,
       required this.hintText,
       this.textInputType = TextInputType.text,
-      this.isDesktop = true,
       this.multiLine = false,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final bool isDesktop = ScreenHelper.isDesktop(context);
     return Expanded(
       child: SizedBox(
         width: isDesktop

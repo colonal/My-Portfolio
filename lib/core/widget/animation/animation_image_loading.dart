@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math' as m;
+
+import 'package:flutter/material.dart';
 
 class AnimationImageLoading extends StatefulWidget {
   final Widget child;

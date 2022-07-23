@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/features/about/domain/entities/about.dart';
+import '../../domain/entities/about.dart';
 
 import '../../../../core/theme/app_color.dart';
 import 'socil_media_widget.dart';

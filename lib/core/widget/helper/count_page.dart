@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
+import 'screen_helper.dart';
 
-import '../theme/app_color.dart';
+import '../../theme/app_color.dart';
 
 class CountPage extends StatelessWidget {
   final Widget Function(BuildContext, Size) child;

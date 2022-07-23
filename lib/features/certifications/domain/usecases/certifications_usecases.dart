@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/certifications/domain/entities/certifications.dart';
-import 'package:my_profile/features/certifications/domain/repositories/certifications_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/certifications.dart';
+import '../repositories/certifications_repositories.dart';
 
 class CertificationsUsecases {
   final CertificationsRepositories repositories;

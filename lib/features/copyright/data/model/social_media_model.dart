@@ -1,4 +1,4 @@
-import 'package:my_profile/features/copyright/domain/entities/social_madia.dart';
+import '../../domain/entities/social_madia.dart';
 
 class SocialMediaModel extends SocialMedia {
   SocialMediaModel({required super.url, required super.icon});

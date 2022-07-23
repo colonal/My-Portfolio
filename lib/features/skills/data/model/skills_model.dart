@@ -1,4 +1,4 @@
-import 'package:my_profile/features/skills/domin/entites/skills.dart';
+import '../../domin/entites/skills.dart';
 
 class SkillsModel extends Skills {
   SkillsModel({required super.skills});

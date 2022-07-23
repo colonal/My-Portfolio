@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:my_profile/features/certifications/data/model/certifications_model.dart';
 
-import 'package:my_profile/features/certifications/domain/entities/certifications.dart';
+import '../../domain/entities/certifications.dart';
+import '../model/certifications_model.dart';
 
 abstract class CertificationsDataSource {
   Future<List<Certifications>> certificationsgetData();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/count_page.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
+import '../../../../core/widget/helper/count_page.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
 
-import '../../../../core/widget/title_page.dart';
+import '../../../../core/widget/helper/title_page.dart';
 
 class ContentWidget extends StatelessWidget {
   final Widget Function(BuildContext, Size) child;

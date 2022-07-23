@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/home/data/datasources/home_remote_data_source.dart';
-import 'package:my_profile/features/home/data/repositories/home_repositories_impl.dart';
-import 'package:my_profile/main_screen.dart';
+import 'core/widget/helper/screen_helper.dart';
+import 'features/home/data/datasources/home_remote_data_source.dart';
+import 'features/home/data/repositories/home_repositories_impl.dart';
+import 'main_screen.dart';
 import 'core/theme/app_thime.dart';
 
 import 'core/utils/my_custom_scroll_behavior.dart';

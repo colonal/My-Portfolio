@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/contact/data/datasources/contact_remote_data_sources.dart';
-import 'package:my_profile/features/contact/domain/entities/contact.dart';
-import 'package:my_profile/features/contact/domain/repositories/contact_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../datasources/contact_remote_data_sources.dart';
+import '../../domain/entities/contact.dart';
+import '../../domain/repositories/contact_repositories.dart';
 
 class ContactRepositoriesImpl extends ContactRepositories {
   final ContactRemoteDataSource dataSource;

@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/core/widget/count_widget.dart';
-import 'package:my_profile/features/certifications/presentation/widgets/itme_widget.dart';
+import '../../../../core/widget/helper/count_widget.dart';
+import '../widgets/itme_widget.dart';
 import '../../domain/entities/certifications.dart';
 import '../widgets/content_widget.dart';
 
@@ -50,7 +48,7 @@ class _CertificationsMobileState extends State<CertificationsMobile> {
                       itemBuilder: (context, index) => Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(child: _buildItme(index)),
+                          Expanded(child: _buildItme(index * 2)),
                           Expanded(child: _buildItme(index * 2 + 1)),
                         ],
                       ),
@@ -73,6 +71,6 @@ class _CertificationsMobileState extends State<CertificationsMobile> {
   Widget _buildItme(int count) {
     return count < widget.data.length
         ? ItmeWidget(data: widget.data[count], isDesktop: false)
-        : Expanded(child: Container());
+        : Container();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:my_profile/features/projects/data/model/project_model.dart';
+import '../model/project_model.dart';
 
 abstract class ProjectRemoteDataSource {
   Future<List<ProjectModel>> getDataProject();

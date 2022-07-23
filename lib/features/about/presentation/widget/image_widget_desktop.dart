@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:my_profile/core/widget/animation_image_loading.dart';
+import '../../../../core/widget/animation/animation_image_loading.dart';
 
 class ImageWidgetDesktop extends StatelessWidget {
   final String img;

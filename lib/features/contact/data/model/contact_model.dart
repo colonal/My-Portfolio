@@ -1,4 +1,4 @@
-import 'package:my_profile/features/contact/domain/entities/contact.dart';
+import '../../domain/entities/contact.dart';
 
 class ContactModel extends Contact {
   ContactModel({

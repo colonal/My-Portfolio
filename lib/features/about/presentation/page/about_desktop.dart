@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/count_page.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/core/widget/title_page.dart';
-import 'package:my_profile/features/about/domain/entities/about.dart';
-import 'package:my_profile/features/about/presentation/widget/about_details_widget_desktop.dart';
-import 'package:my_profile/features/about/presentation/widget/image_widget_desktop.dart';
+import '../../../../core/widget/helper/count_page.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../../../../core/widget/helper/title_page.dart';
+import '../../domain/entities/about.dart';
+import '../widget/about_details_widget_desktop.dart';
+import '../widget/image_widget_desktop.dart';
 
 class AboutDesktop extends StatelessWidget {
   final About data;
@@ -44,7 +44,7 @@ class AboutDesktop extends StatelessWidget {
                           duration: Duration(seconds: 1),
                           child: TitlePage(
                             title: "About Me",
-                            subTitle: "Discver",
+                            subTitle: "Discover",
                           ),
                         ),
                       ),

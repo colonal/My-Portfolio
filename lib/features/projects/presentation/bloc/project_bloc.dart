@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:my_profile/features/projects/domain/entities/project.dart';
-import 'package:my_profile/features/projects/domain/usecasee/get_data_project_usecase.dart';
+import '../../domain/entities/project.dart';
+import '../../domain/usecasee/get_data_project_usecase.dart';
 
 part 'project_event.dart';
 part 'project_state.dart';

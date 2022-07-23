@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/core/widget/top_bar/drawer_widget.dart';
-import 'package:my_profile/core/widget/top_bar/top_bar.dart';
-import 'package:my_profile/core/widget/top_bar/top_bar_itme.dart';
-import 'package:my_profile/features/certifications/presentation/pages/certifications_page.dart';
-import 'package:my_profile/features/contact/persentation/page/contact_page.dart';
-import 'package:my_profile/features/copyright/persentaion/page/copyright_page.dart';
+import 'core/widget/helper/screen_helper.dart';
+import 'core/widget/top_bar/drawer_widget.dart';
+import 'core/widget/top_bar/top_bar.dart';
+import 'features/certifications/presentation/pages/certifications_page.dart';
+import 'features/contact/persentation/page/contact_page.dart';
+import 'features/copyright/persentaion/page/copyright_page.dart';
 
-import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
-import 'package:my_profile/features/home/presentation/pages/home_page.dart';
-import 'package:my_profile/features/projects/presentation/bloc/project_bloc.dart';
-import 'package:my_profile/features/projects/presentation/pages/project_page.dart';
-import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
-import 'package:my_profile/features/skills/presentation/pages/skills_page.dart';
-
-import 'core/utils/my_bloc_observer.dart';
+import 'features/home/presentation/bloc/home_bloc.dart';
+import 'features/home/presentation/pages/home_page.dart';
+import 'features/projects/presentation/bloc/project_bloc.dart';
+import 'features/projects/presentation/pages/project_page.dart';
+import 'features/skills/presentation/bloc/skills_bloc.dart';
+import 'features/skills/presentation/pages/skills_page.dart';
 import 'features/about/presentation/bloc/about_bloc.dart';
 import 'features/about/presentation/page/about_page.dart';
 import 'features/certifications/presentation/bloc/certifications_bloc.dart';
 import 'features/contact/persentation/bloc/contact_bloc.dart';
 import 'features/copyright/persentaion/bloc/copyright_bloc.dart';
 import 'ingection_container.dart' as di;
+import 'package:universal_html/html.dart' as html;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -60,52 +58,27 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final bool isDesktop = ScreenHelper.isDesktop(context);
+    final Size size = MediaQuery.of(context).size;
     return MultiBlocProvider(
       providers: [
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-                create: (_) => di.sl<HomeBloc>()..add(HomeGetDataEvent()));
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) => di.sl<HomeBloc>()..add(HomeGetDataEvent()),
         ),
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-                create: (_) => di.sl<AboutBloc>()..add(AboutGetDataEvent()));
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) => di.sl<AboutBloc>()..add(AboutGetDataEvent()),
         ),
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-                create: (_) => di.sl<SkillsBloc>()..add(GetDataSkillsEvent()));
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) => di.sl<SkillsBloc>()..add(GetDataSkillsEvent()),
         ),
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-                create: (_) => di.sl<CertificationsBloc>()
-                  ..add(CertificationsGetDataEvent()));
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) =>
+              di.sl<CertificationsBloc>()..add(CertificationsGetDataEvent()),
         ),
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-                create: (_) =>
-                    di.sl<ProjectBloc>()..add(ProjectGetDataEvent()));
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) => di.sl<ProjectBloc>()..add(ProjectGetDataEvent()),
         ),
-        BlocOverrides.runZoned(
-          () {
-            return BlocProvider(
-              create: (_) => di.sl<ContactBloc>(),
-            );
-          },
-          blocObserver: MyBlocObserver(),
+        BlocProvider(
+          create: (_) => di.sl<ContactBloc>(),
         ),
         BlocProvider(
           create: (_) => di.sl<CopyrightBloc>()..add(CopyRightGetDataEvent()),
@@ -115,27 +88,25 @@ class _MainScreenState extends State<MainScreen> {
         key: key,
         body: Stack(
           children: [
-            ListView(
-              controller: controller,
-              shrinkWrap: true,
-              children: const [
-                HomePage(),
-                AboutPage(),
-                SkilsPage(),
-                CertificationsPage(),
-                ProjectPage(),
-                ContactPage(),
-                CopyrightPage(),
-              ],
-            ),
+            isDesktop
+                ? _buildListView()
+                : RefreshIndicator(
+                    color: Theme.of(context).hintColor,
+                    onRefresh: () async {
+                      Navigator.of(context).pop();
+                      html.window.location.reload();
+                    },
+                    child: _buildListView(),
+                  ),
             if (!isDesktop)
               Positioned(
-                  top: 5,
-                  left: 5,
-                  child: IconButton(
-                      onPressed: () => key.currentState!.openDrawer(),
-                      icon: const Icon(Icons.dehaze_rounded,
-                          color: Colors.white))),
+                top: 5,
+                left: 5,
+                child: IconButton(
+                  onPressed: () => key.currentState!.openDrawer(),
+                  icon: const Icon(Icons.dehaze_rounded, color: Colors.white),
+                ),
+              ),
             if (isDesktop)
               Positioned(
                 top: 0,
@@ -144,17 +115,22 @@ class _MainScreenState extends State<MainScreen> {
                   isScrollUp: isScrollUp,
                   onTap: (index) {
                     controller.animateTo(
-                      index * MediaQuery.of(context).size.height,
+                      index * size.height,
                       duration: const Duration(milliseconds: 700),
                       curve: Curves.fastOutSlowIn,
                     );
 
                     if (index != 0) {
-                      Future.delayed(const Duration(milliseconds: 800), () {
-                        setState(() {
-                          isScrollUp = false;
-                        });
-                      });
+                      Future.delayed(
+                        const Duration(milliseconds: 800),
+                        () {
+                          setState(
+                            () {
+                              isScrollUp = false;
+                            },
+                          );
+                        },
+                      );
                     }
                   },
                 ),
@@ -165,7 +141,7 @@ class _MainScreenState extends State<MainScreen> {
             ? DrawerWidget(
                 onTap: (index) {
                   controller.animateTo(
-                    index * MediaQuery.of(context).size.height,
+                    index * size.height,
                     duration: const Duration(milliseconds: 700),
                     curve: Curves.fastOutSlowIn,
                   );
@@ -173,6 +149,23 @@ class _MainScreenState extends State<MainScreen> {
               )
             : null,
       ),
+    );
+  }
+
+  ListView _buildListView() {
+    return ListView(
+      controller: controller,
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      children: const [
+        HomePage(),
+        AboutPage(),
+        SkilsPage(),
+        CertificationsPage(),
+        ProjectPage(),
+        ContactPage(),
+        CopyrightPage(),
+      ],
     );
   }
 }

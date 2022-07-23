@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/features/certifications/domain/entities/certifications.dart';
+import '../../domain/entities/certifications.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/utils/snackbar_message.dart';

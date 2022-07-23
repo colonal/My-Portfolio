@@ -1,4 +1,4 @@
-import 'package:my_profile/features/home/domain/entities/home.dart';
+import '../../domain/entities/home.dart';
 
 class HomeModel extends Home {
   HomeModel(

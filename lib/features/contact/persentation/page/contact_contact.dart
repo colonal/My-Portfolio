@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/contact/persentation/widget/form_submit_btn.dart';
-import 'package:my_profile/features/contact/persentation/widget/text_input_widget.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../widget/form_submit_btn.dart';
+import '../widget/text_input_widget.dart';
 
-import '../../../../core/widget/count_page.dart';
-import '../../../../core/widget/title_page.dart';
+import '../../../../core/widget/helper/count_page.dart';
+import '../../../../core/widget/helper/title_page.dart';
 import '../bloc/contact_bloc.dart';
 
 class ContentContact extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/skills/domin/entites/skills.dart';
+import '../../../../core/error/failure.dart';
+import '../entites/skills.dart';
 
 import '../repositories/skills_repositories.dart';
 

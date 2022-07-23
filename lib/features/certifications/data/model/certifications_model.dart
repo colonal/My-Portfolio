@@ -1,4 +1,4 @@
-import 'package:my_profile/features/certifications/domain/entities/certifications.dart';
+import '../../domain/entities/certifications.dart';
 
 class CertificationsModel extends Certifications {
   CertificationsModel(

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/copyright/domain/entities/copyright.dart';
-import 'package:my_profile/features/copyright/domain/repositories/copyright_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/copyright.dart';
+import '../repositories/copyright_repositories.dart';
 
 class CopyRightGetData {
   final CopyRightRepositories repositories;

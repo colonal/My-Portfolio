@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:my_profile/features/certifications/domain/usecases/certifications_usecases.dart';
+import '../../domain/usecases/certifications_usecases.dart';
 
 import '../../domain/entities/certifications.dart';
 

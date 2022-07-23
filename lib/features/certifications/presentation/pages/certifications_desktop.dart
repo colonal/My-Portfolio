@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/features/certifications/domain/entities/certifications.dart';
-import 'package:my_profile/core/widget/count_widget.dart';
-import 'package:my_profile/features/certifications/presentation/widgets/itme_widget.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../../domain/entities/certifications.dart';
+import '../../../../core/widget/helper/count_widget.dart';
+import '../widgets/itme_widget.dart';
 
 import '../widgets/content_widget.dart';
 
@@ -55,7 +55,7 @@ class _CertificationsDesktopState extends State<CertificationsDesktop> {
                               Expanded(
                                 child: Row(
                                   children: [
-                                    _buildItme(index),
+                                    _buildItme(index * 4),
                                     const SizedBox(width: 10),
                                     _buildItme(index * 4 + 1),
                                   ],

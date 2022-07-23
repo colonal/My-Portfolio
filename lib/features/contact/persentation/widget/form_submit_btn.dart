@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/theme/app_color.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/contact/persentation/bloc/contact_bloc.dart';
+import '../../../../core/theme/app_color.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../bloc/contact_bloc.dart';
 
 class FormSubmitBtn extends StatefulWidget {
   const FormSubmitBtn({Key? key}) : super(key: key);

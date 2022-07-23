@@ -1,8 +1,8 @@
-import 'package:my_profile/features/projects/data/datasources/project_remote_data_source.dart';
-import 'package:my_profile/features/projects/domain/entities/project.dart';
-import 'package:my_profile/core/error/failure.dart';
+import '../datasources/project_remote_data_source.dart';
+import '../../domain/entities/project.dart';
+import '../../../../core/error/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/features/projects/domain/repositories/project_repositories.dart';
+import '../../domain/repositories/project_repositories.dart';
 
 class ProjectRepositoriesImpl extends ProjectRepositories {
   final ProjectRemoteDataSource dataSource;

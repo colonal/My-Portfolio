@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:my_profile/features/copyright/domain/entities/copyright.dart';
-import 'package:my_profile/features/copyright/domain/usecases/copyright_usecase.dart';
+
+import '../../domain/entities/copyright.dart';
+import '../../domain/usecases/copyright_usecase.dart';
 
 part 'copyright_event.dart';
 part 'copyright_state.dart';

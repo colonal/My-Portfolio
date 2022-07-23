@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/projects/domain/entities/project.dart';
-import 'package:my_profile/features/projects/domain/repositories/project_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/project.dart';
+import '../repositories/project_repositories.dart';
 
 class GetDataProjectUsecase {
   final ProjectRepositories repositories;

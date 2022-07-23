@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/animation_image_loading.dart';
+import '../../../../core/widget/animation/animation_image_loading.dart';
 
-import '../../../../core/widget/title_page.dart';
+import '../../../../core/widget/helper/title_page.dart';
 
 class ImageWidgetMobil extends StatelessWidget {
   final String img;
@@ -87,7 +87,7 @@ _buildStyleImage(
             padding: const EdgeInsets.all(25),
             child: const TitlePage(
               title: "About Me",
-              subTitle: "Discver",
+              subTitle: "Discover",
             ),
           ),
         ),

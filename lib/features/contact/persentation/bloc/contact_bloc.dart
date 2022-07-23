@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/features/contact/domain/entities/contact.dart';
-import 'package:my_profile/features/contact/domain/usecases/add_contact.dart';
+import '../../domain/entities/contact.dart';
+import '../../domain/usecases/add_contact.dart';
 
 part 'contact_state.dart';
 

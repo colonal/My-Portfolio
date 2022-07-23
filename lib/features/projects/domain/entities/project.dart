@@ -1,4 +1,4 @@
-import 'package:my_profile/features/projects/domain/entities/info.dart';
+import 'info.dart';
 
 class Project {
   final String name;

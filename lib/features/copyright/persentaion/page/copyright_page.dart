@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/loding_widget.dart';
-import 'package:my_profile/features/copyright/persentaion/bloc/copyright_bloc.dart';
+import '../../../../core/widget/page/loading_widget.dart';
+import '../bloc/copyright_bloc.dart';
 
 import 'content_contact.dart';
 

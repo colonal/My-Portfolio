@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/features/copyright/domain/entities/copyright.dart';
-import 'package:my_profile/features/copyright/domain/entities/social_madia.dart';
 
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../../domain/entities/copyright.dart';
 import '../widget/socialmedia_itme_widget.dart';
 
 class ContentContact extends StatelessWidget {

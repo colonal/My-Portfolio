@@ -1,6 +1,6 @@
-import 'package:my_profile/features/projects/data/model/info_model.dart';
-import 'package:my_profile/features/projects/domain/entities/info.dart';
-import 'package:my_profile/features/projects/domain/entities/project.dart';
+import 'info_model.dart';
+import '../../domain/entities/info.dart';
+import '../../domain/entities/project.dart';
 
 class ProjectModel extends Project {
   ProjectModel(

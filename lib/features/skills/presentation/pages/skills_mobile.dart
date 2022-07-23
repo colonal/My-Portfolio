@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/count_page.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/features/skills/presentation/widget/skills_itme_mobile_widget.dart';
+import '../../../../core/widget/helper/count_page.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../widget/skills_itme_mobile_widget.dart';
 
-import '../../../../core/widget/title_page.dart';
+import '../../../../core/widget/helper/title_page.dart';
 
 class SkillsMobile extends StatelessWidget {
   final List<Map<String, List>> data;

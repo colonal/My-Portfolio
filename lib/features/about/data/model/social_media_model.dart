@@ -1,4 +1,4 @@
-import 'package:my_profile/features/about/domain/entities/social_media.dart';
+import '../../domain/entities/social_media.dart';
 
 class SocialMediaModel extends SocialMedia {
   SocialMediaModel(

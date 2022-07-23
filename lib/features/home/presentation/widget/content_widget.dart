@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/animation_image_loading.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
+import '../../../../core/widget/animation/animation_image_loading.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
 
 import '../../../../core/theme/app_color.dart';
 import '../../domain/entities/home.dart';

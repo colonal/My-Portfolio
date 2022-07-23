@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/utils/snackbar_message.dart';
-import 'package:my_profile/core/widget/animation_icon.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/about/domain/entities/social_media.dart';
+import '../../../../core/utils/snackbar_message.dart';
+import '../../../../core/widget/animation/animation_icon.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../../domain/entities/social_media.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SocilMediaWidget extends StatelessWidget {

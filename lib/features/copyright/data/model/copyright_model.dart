@@ -1,5 +1,5 @@
-import 'package:my_profile/features/copyright/data/model/social_media_model.dart';
-import 'package:my_profile/features/copyright/domain/entities/copyright.dart';
+import 'social_media_model.dart';
+import '../../domain/entities/copyright.dart';
 
 import '../../domain/entities/social_madia.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/count_page.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/core/widget/title_page.dart';
-import 'package:my_profile/features/skills/presentation/widget/Skills_itme_desktop_widget.dart';
+import '../../../../core/widget/helper/count_page.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../../../../core/widget/helper/title_page.dart';
+import '../widget/Skills_itme_desktop_widget.dart';
 
 class SkillsDesktop extends StatelessWidget {
   final List<Map<String, List>> data;

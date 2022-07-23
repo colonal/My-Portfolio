@@ -1,5 +1,5 @@
-import 'package:my_profile/features/about/data/model/social_media_model.dart';
-import 'package:my_profile/features/about/domain/entities/about.dart';
+import 'social_media_model.dart';
+import '../../domain/entities/about.dart';
 
 class AboutModel extends About {
   AboutModel(

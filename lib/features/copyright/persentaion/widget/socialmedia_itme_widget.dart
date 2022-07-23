@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/animation_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/utils/snackbar_message.dart';
+import '../../../../core/widget/animation/animation_icon.dart';
 import '../../domain/entities/social_madia.dart';
 
 class SocialmediaItmeWidget extends StatelessWidget {

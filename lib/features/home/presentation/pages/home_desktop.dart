@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/features/home/domain/entities/home.dart';
-import 'package:my_profile/features/home/presentation/widget/content_widget.dart';
+import '../../domain/entities/home.dart';
+import '../widget/content_widget.dart';
 
 class HomeDesktop extends StatelessWidget {
   final Home data;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/features/home/domain/entities/home.dart';
+import '../../domain/entities/home.dart';
 
 import '../widget/content_widget.dart';
 

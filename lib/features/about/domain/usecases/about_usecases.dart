@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_profile/core/error/failure.dart';
-import 'package:my_profile/features/about/domain/entities/about.dart';
-import 'package:my_profile/features/about/domain/repositories/about_repositories.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/about.dart';
+import '../repositories/about_repositories.dart';
 
 class AboutUsecases {
   final AboutRepositories repositories;

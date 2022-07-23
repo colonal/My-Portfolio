@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
+import '../animation/fade_animation.dart';
 
 import 'top_bar_itme.dart';
 

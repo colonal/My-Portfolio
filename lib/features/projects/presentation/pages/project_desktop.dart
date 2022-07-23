@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/widget/fade_animation.dart';
-import 'package:my_profile/features/projects/domain/entities/project.dart';
-import '../../../../core/widget/count_widget.dart';
+import '../../../../core/widget/animation/fade_animation.dart';
+import '../../domain/entities/project.dart';
+import '../../../../core/widget/helper/count_widget.dart';
 import '../widgets/content_widget.dart';
 import '../widgets/itme_project.dart';
 

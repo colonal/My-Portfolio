@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/no_internet.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/home/presentation/bloc/home_bloc.dart';
-import 'package:my_profile/features/home/presentation/pages/home_desktop.dart';
-import 'package:my_profile/core/widget/loding_widget.dart';
+import '../../../../core/widget/page/no_internet.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../bloc/home_bloc.dart';
+import 'home_desktop.dart';
+import '../../../../core/widget/page/loading_widget.dart';
 
 import 'home_mobile.dart';
 

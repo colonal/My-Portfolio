@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:my_profile/features/skills/domin/entites/skills.dart';
-import 'package:my_profile/features/skills/domin/usecases/skills_usecases.dart';
+import '../../domin/entites/skills.dart';
+import '../../domin/usecases/skills_usecases.dart';
 
 part 'skills_event.dart';
 part 'skills_state.dart';

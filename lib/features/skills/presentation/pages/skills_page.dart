@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_profile/core/widget/loding_widget.dart';
-import 'package:my_profile/core/widget/screen_helper.dart';
-import 'package:my_profile/features/skills/presentation/bloc/skills_bloc.dart';
-import 'package:my_profile/features/skills/presentation/pages/skills_desktop.dart';
+import '../../../../core/widget/page/loading_widget.dart';
+import '../../../../core/widget/helper/screen_helper.dart';
+import '../bloc/skills_bloc.dart';
+import 'skills_desktop.dart';
 
-import '../../../../core/widget/no_internet.dart';
+import '../../../../core/widget/page/no_internet.dart';
 import 'skills_mobile.dart';
 
 class SkilsPage extends StatelessWidget {
