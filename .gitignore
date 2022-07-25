@@ -53,3 +53,4 @@ app.*.map.json
 firebase.json
 .firebaserc
 /.firebase/
+.data/

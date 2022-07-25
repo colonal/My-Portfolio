@@ -22,6 +22,7 @@ class CertificationsDataSourceImpl extends CertificationsDataSource {
     for (var itme in (data.data() as Map)["certifications"] as List) {
       dataList.add(CertificationsModel.fromJson(itme));
     }
+    dataList = dataList.reversed.toList();
     return dataList;
   }
 }

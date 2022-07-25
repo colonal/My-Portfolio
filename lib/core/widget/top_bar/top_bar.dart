@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../animation/fade_animation.dart';
 
@@ -31,39 +33,44 @@ class _TopBarState extends State<TopBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      color: Colors.black.withOpacity(0.6),
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      width: MediaQuery.of(context).size.width,
-      height: widget.isScrollUp ? 60 : 10,
-      child: widget.isScrollUp
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...List.generate(
-                  topBar.length,
-                  (index) => FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: OpacityAnimation(
-                      duration: const Duration(milliseconds: 600),
-                      child: TopBarItme(
-                        text: topBar[index],
-                        isClick: index == selectItme,
-                        isEnd: index == topBar.length - 1,
-                        onTap: () {
-                          widget.onTap(index);
-                          setState(() {
-                            selectItme = index;
-                          });
-                        },
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          color: Colors.black.withOpacity(0.4),
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          width: MediaQuery.of(context).size.width,
+          height: widget.isScrollUp ? 60 : 10,
+          child: widget.isScrollUp
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      topBar.length,
+                      (index) => FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: OpacityAnimation(
+                          duration: const Duration(milliseconds: 600),
+                          child: TopBarItme(
+                            text: topBar[index],
+                            isClick: index == selectItme,
+                            isEnd: index == topBar.length - 1,
+                            onTap: () {
+                              widget.onTap(index);
+                              setState(() {
+                                selectItme = index;
+                              });
+                            },
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ],
-            )
-          : Container(),
+                  ],
+                )
+              : Container(),
+        ),
+      ),
     );
   }
 }

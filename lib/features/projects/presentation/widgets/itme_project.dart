@@ -76,7 +76,7 @@ class ItmeProject extends StatelessWidget {
             ),
             Expanded(
               child: AutoSizeText(
-                data.description + data.description,
+                data.description,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
                 minFontSize: 10,
@@ -95,34 +95,13 @@ class ItmeProject extends StatelessWidget {
                     (index) => Image.network(
                           data.infos[index].icon,
                           fit: BoxFit.fill,
-                          errorBuilder: (ctx, _, __) => CircleAvatar(
-                              radius: 18,
-                              child: Image.asset("assets/images/idea.png")),
+                          errorBuilder: (ctx, _, __) => _buildIconImage(
+                              Image.asset("assets/images/idea.png"),
+                              index,
+                              context),
                           loadingBuilder: (_, child, loadingProgress) {
                             if (loadingProgress == null) {
-                              return AnimationIcon(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: CircleAvatar(
-                                    radius: 18,
-                                    child: child,
-                                  ),
-                                ),
-                                onTap: () async {
-                                  try {
-                                    final Uri url =
-                                        Uri.parse(data.infos[index].url);
-                                    if (!await launchUrl(url)) {
-                                      throw 'Could not launch $url';
-                                    }
-                                  } catch (e) {
-                                    SnakBarMessage.showErrorSnackBar(
-                                        message: e.toString(),
-                                        context: context);
-                                  }
-                                },
-                              );
+                              return _buildIconImage(child, index, context);
                             }
                             return AnimationImageLoading(
                                 width: 50,
@@ -158,6 +137,29 @@ class ItmeProject extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  AnimationIcon _buildIconImage(Widget child, int index, BuildContext context) {
+    return AnimationIcon(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: CircleAvatar(
+          radius: 18,
+          child: child,
+        ),
+      ),
+      onTap: () async {
+        try {
+          final Uri url = Uri.parse(data.infos[index].url);
+          if (!await launchUrl(url)) {
+            throw 'Could not launch $url';
+          }
+        } catch (e) {
+          SnakBarMessage.showErrorSnackBar(
+              message: e.toString(), context: context);
+        }
+      },
     );
   }
 

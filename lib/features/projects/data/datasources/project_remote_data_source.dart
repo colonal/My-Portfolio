@@ -14,12 +14,14 @@ class ProjectRemoteDataSourceImpl extends ProjectRemoteDataSource {
   @override
   Future<List<ProjectModel>> getDataProject() async {
     List<ProjectModel> dataList = [];
+
     final DocumentSnapshot data =
         await firebase.collection("projects").doc("DocProjects").get();
 
     for (var itme in (data.data() as Map)["projects"] as List) {
       dataList.add(ProjectModel.fromJson(itme));
     }
+    dataList = dataList.reversed.toList();
     return dataList;
   }
 }

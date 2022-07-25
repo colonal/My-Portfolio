@@ -25,7 +25,12 @@ class SocialmediaItmeWidget extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(width: 3, color: theme.hintColor),
           ),
-          child: Image.network(socialMedia.icon),
+          child: Image.network(
+            socialMedia.icon,
+            errorBuilder: (context, error, stackTrace) {
+              return Image.asset("assets/images/social-media.png");
+            },
+          ),
         ),
         onTap: () async {
           try {
