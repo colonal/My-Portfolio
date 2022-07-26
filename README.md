@@ -5,7 +5,7 @@
 <h4>This repository contains code for my portfolio website which is made using flutter.</h4>
 
 <div align="center">
-  <img alt="Demo" src="./screenshot/screenshot.png" />
+  <img alt="Demo" src="./screenshot/screenshot-mockups.png" />
 </div>
 
 
