@@ -31,7 +31,7 @@ My personal portfolio [Colonal](https://my-profile-64f92.web.app/#/) which featu
 ---
 
 ## Development Setup
-Clone the repository and run the following commands:
+###### Clone the repository and run the following commands:
 ```
 git clone https://github.com/colonal/My-Portfolio.git
 cd My-Portfolio
@@ -40,11 +40,11 @@ flutter pub get
 #
 ### Firebase set up
 
-##### Download Firebase CLI [here](https://firebase.google.com/docs/cli#setup_update_cli)
+###### Download Firebase CLI [here](https://firebase.google.com/docs/cli#setup_update_cli)
 
-##### Add Firebase to your Flutter app [here](https://firebase.google.com/docs/flutter/setup?platform=ios)
+###### Add Firebase to your Flutter app [here](https://firebase.google.com/docs/flutter/setup?platform=ios)
 
-##### Add data in firebase check [data samples](https://github.com/colonal/My-Portfolio/tree/main/lib/data%20samples)  View data format
+###### Add data in firebase check [data samples](https://github.com/colonal/My-Portfolio/tree/main/lib/data%20samples)  View data format
 #
 Run App
 ```
