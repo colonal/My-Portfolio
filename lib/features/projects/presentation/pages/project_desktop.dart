@@ -51,16 +51,16 @@ class _PageDesktopState extends State<PageDesktop> {
                           Expanded(
                             child: Row(
                               children: [
-                                newMethod(index * 4),
-                                newMethod(index * 4 + 1),
+                                newMethod(index * 4,size),
+                                newMethod(index * 4 + 1,size),
                               ],
                             ),
                           ),
                           Expanded(
                             child: Row(
                               children: [
-                                newMethod(index * 4 + 2),
-                                newMethod(index * 4 + 3),
+                                newMethod(index * 4 + 2,size),
+                                newMethod(index * 4 + 3,size),
                               ],
                             ),
                           ),
@@ -81,14 +81,14 @@ class _PageDesktopState extends State<PageDesktop> {
             ));
   }
 
-  Widget newMethod(int count) {
+  Widget newMethod(int count, Size size) {
     return count < widget.data.length
         ? Padding(
             padding: const EdgeInsets.all(5.0),
             child: FadeAnimation(
               offset: const Offset(0, 1),
               duration: Duration(milliseconds: (count + 6) * 100),
-              child: ItmeProject(data: widget.data[count]),
+              child: ItmeProject(data: widget.data[count],size:size),
             ),
           )
         : Container();

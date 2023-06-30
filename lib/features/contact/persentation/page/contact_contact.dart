@@ -43,21 +43,25 @@ class ContentContact extends StatelessWidget {
                     TextInputWidget(
                       controller: bloc.nameController,
                       hintText: "Name",
+                      size: size,
                     ),
                     TextInputWidget(
                       controller: bloc.emailController,
                       hintText: "Email",
                       textInputType: TextInputType.emailAddress,
+                      size: size,
                     ),
                     TextInputWidget(
                       controller: bloc.subjectController,
                       hintText: "Subject",
+                      size: size,
                     ),
                     TextInputWidget(
                       controller: bloc.messageController,
                       hintText: "Your Message",
                       textInputType: TextInputType.multiline,
                       multiLine: true,
+                      size: size,
                     ),
                     const Expanded(child: FormSubmitBtn()),
                   ],

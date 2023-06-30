@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import '../../domain/entities/project.dart';
 import '../../domain/usecasee/get_data_project_usecase.dart';
 

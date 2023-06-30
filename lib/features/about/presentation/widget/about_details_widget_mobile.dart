@@ -19,69 +19,95 @@ class AboutDetailsWidgetMobile extends StatelessWidget {
     return Container(
       width: size.width,
       height: size.height,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
         border: Border.all(color: AppColor.textColorDark, width: 2),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: size.height * 0.7,
-            width: size.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: _buildText(theme, "Name:", " ${data.name}")),
-                Expanded(child: _buildText(theme, "Age:", " ${data.age}")),
-                Expanded(child: _buildText(theme, "Phone:", " ${data.phone}")),
-                Expanded(
-                    child: _buildText(theme, "Address:", " ${data.address}")),
-              ],
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: size.height * 0.7,
+              width: size.width,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _buildText(theme, "Name:", " ${data.name}"),
+                        ),
+                        Expanded(
+                          child: _buildText(theme, "Age:", " ${data.age}"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _buildText(theme, "Phone:", " ${data.phone}"),
+                        ),
+                        Expanded(
+                          child:
+                              _buildText(theme, "Address:", " ${data.address}"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: size.height * 0.2,
-            width: size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SocilMediaWidget(
-                  itme: data.socialMedia.facebook,
-                  height: size.height * 0.2,
-                ),
-                SocilMediaWidget(
-                  itme: data.socialMedia.linkedin,
-                  height: size.height * 0.2,
-                ),
-                SocilMediaWidget(
-                  itme: data.socialMedia.github,
-                  height: size.height * 0.2,
-                ),
-              ],
+            SizedBox(
+              height: size.height * 0.2,
+              width: size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SocilMediaWidget(
+                    itme: data.socialMedia.facebook,
+                    size: Size(size.width, size.height * 0.2),
+                  ),
+                  SocilMediaWidget(
+                    itme: data.socialMedia.linkedin,
+                    size: Size(size.width, size.height * 0.2),
+                  ),
+                  SocilMediaWidget(
+                    itme: data.socialMedia.github,
+                    size: Size(size.width, size.height * 0.2),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildText(ThemeData theme, String title, String text) {
-    return AutoSizeText.rich(
-      TextSpan(
-        text: title,
-        children: [
-          TextSpan(
-            text: text,
-            style: theme.textTheme.headline4,
-          )
-        ],
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: AutoSizeText.rich(
+        TextSpan(
+          text: title,
+          children: [
+            TextSpan(
+              text: text,
+              style: theme.textTheme.headlineSmall,
+            )
+          ],
+        ),
+        textAlign: TextAlign.start,
+        maxFontSize: 16,
+        minFontSize: 10,
+        style:
+            theme.textTheme.headlineSmall!.copyWith(color: AppColor.textColor),
       ),
-      textAlign: TextAlign.start,
-      maxFontSize: 16,
-      minFontSize: 10,
-      style: theme.textTheme.headline4!.copyWith(color: AppColor.textColor),
     );
   }
 }

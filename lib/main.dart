@@ -17,7 +17,7 @@ void main() async {
   );
   setPathUrlStrategy();
   await di.init();
-  runApp(const MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,17 +25,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery(
-      data: const MediaQueryData(),
-      child: MaterialApp(
-        title: 'Colonal',
-        scrollBehavior: MyCustomScrollBehavior(),
-        debugShowCheckedModeBanner: false,
-        theme: ScreenHelper.isDesktop(context)
-            ? AppTheme.themeDesktop
-            : AppTheme.themeMobile,
-        home: const MainScreen(),
-      ),
-    );
+    return MaterialApp(
+          title: 'Colonal',
+          scrollBehavior: MyCustomScrollBehavior(),
+          debugShowCheckedModeBanner: false,
+          theme: ScreenHelper.isDesktop(context)
+              ? AppTheme.themeDesktop
+              : AppTheme.themeMobile,
+          home: const MainScreen(),
+        );
   }
 }

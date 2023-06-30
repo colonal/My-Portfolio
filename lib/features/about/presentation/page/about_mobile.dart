@@ -1,5 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/utils/calculate_font_size.dart';
 import '../../../../core/widget/helper/count_page.dart';
 import '../../../../core/widget/animation/fade_animation.dart';
 import '../../domain/entities/about.dart';
@@ -15,50 +15,65 @@ class AbouitMobile extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return CountPage(
       countText: "01",
-      child: (context, size) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-        child: Column(
-          children: [
-            FadeAnimation(
-              offset: const Offset(-20, 0),
-              duration: const Duration(seconds: 1),
-              child: SizedBox(
-                height: size.height * 0.33,
-                child: ImageWidgetMobil(img: data.image, size: size),
+      child: (context, size) => SizedBox(
+        width: size.width,
+        height: size.height,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+          child: Column(
+            children: [
+              FadeAnimation(
+                offset: const Offset(-20, 0),
+                duration: const Duration(seconds: 1),
+                child: SizedBox(
+                  height: size.height * 0.2,
+                  child: ImageWidgetMobil(img: data.image),
+                ),
               ),
-            ),
-            FadeAnimation(
-              offset: const Offset(20, 0),
-              duration: const Duration(seconds: 2),
-              child: SizedBox(
-                height: size.height * 0.33,
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: AutoSizeText(
-                    data.summary.replaceAll("\\n", "\n\n"),
-                    minFontSize: 13,
-                    style: theme.textTheme.headline3,
+              Expanded(
+                child: FadeAnimation(
+                  offset: const Offset(20, 0),
+                  duration: const Duration(seconds: 2),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return Align(
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            data.summary.replaceAll("\\n", "\n"),
+                            style: theme.textTheme.displaySmall!.copyWith(
+                                fontSize: calculateFontSize(constraints,
+                                    data.summary.replaceAll("\\n", "\n").length)),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            FadeAnimation(
-              offset: const Offset(0, 20),
-              duration: const Duration(seconds: 3),
-              child: SizedBox(
-                  height: size.height * 0.33,
-                  width: size.width,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: AboutDetailsWidgetMobile(
-                      data: data,
-                      size: Size(size.width, size.height * 0.3),
-                    ),
-                  )),
-            ),
-          ],
+              FadeAnimation(
+                offset: const Offset(0, 20),
+                duration: const Duration(seconds: 3),
+                child: SizedBox(
+                    height: size.height * 0.2,
+                    width: size.width,
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: AboutDetailsWidgetMobile(
+                        data: data,
+                        size: Size(size.width, size.height * 0.2),
+                      ),
+                    )),
+              ),
+              SizedBox(height: size.height*.025),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  
 }

@@ -5,58 +5,62 @@ import '../../../../core/widget/helper/title_page.dart';
 
 class ImageWidgetMobil extends StatelessWidget {
   final String img;
-  final Size size;
-  const ImageWidgetMobil({required this.img, required this.size, Key? key})
+  final Widget? child;
+  const ImageWidgetMobil({required this.img,this.child, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    return Image.network(
-      img,
-      fit: BoxFit.fitWidth,
-      alignment: const FractionalOffset(1, 0.1),
-      filterQuality: FilterQuality.low,
-      scale: 1.5,
-      errorBuilder: (_, __, ___) {
-        return _buildStyleImage(size: size, theme: theme);
-      },
-      loadingBuilder: ((context, child, loadingProgress) {
-        if (loadingProgress == null) {
-          return _buildStyleImage(size: size, theme: theme, child: child);
-        }
-        return AnimationImageLoading(
-          width: double.infinity,
-          height: size.height * 0.30,
-          child: Container(
-            width: double.infinity,
-            height: size.height * 0.30,
-            decoration: BoxDecoration(
-              border: Border.all(color: theme.primaryColorDark, width: 10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  offset: const Offset(0, 3),
-                  blurRadius: 6,
+    return LayoutBuilder(
+      builder: (context, constraint) {
+        return Image.network(
+          img,
+          fit: BoxFit.fitWidth,
+          alignment: const FractionalOffset(1, 0.1),
+          filterQuality: FilterQuality.low,
+          scale: 1.5,
+          errorBuilder: (_, __, ___) {
+            return _buildStyleImage(constraint: constraint, theme: theme,child: child);
+          },
+          loadingBuilder: ((context, child, loadingProgress) {
+            if (loadingProgress == null) {
+              return _buildStyleImage(constraint: constraint, theme: theme, child: child);
+            }
+            return AnimationImageLoading(
+              width: double.infinity,
+              height: constraint.maxHeight ,
+              child: Container(
+                width: double.infinity,
+                height: constraint.maxHeight,
+                decoration: BoxDecoration(
+                  border: Border.all(color: theme.primaryColorDark, width: 10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      offset: const Offset(0, 3),
+                      blurRadius: 6,
+                    ),
+                  ],
                 ),
-              ],
-            ),
 
-            // child: child,
-          ),
+                // child: child,
+              ),
+            );
+          }),
         );
-      }),
+      }
     );
   }
 }
 
 _buildStyleImage(
-    {required Size size, required ThemeData theme, Widget? child}) {
+    {required BoxConstraints constraint, required ThemeData theme,  Widget? child}) {
   return Stack(
     children: [
       Container(
-        height: size.height * 0.30,
+        height: constraint.maxHeight ,
         decoration: BoxDecoration(
           border: Border.all(color: theme.primaryColorDark, width: 10),
           boxShadow: [
@@ -71,7 +75,7 @@ _buildStyleImage(
         child: child ?? Container(),
       ),
       Container(
-        height: size.height * 0.30,
+        height: constraint.maxHeight ,
         width: double.infinity,
         alignment: Alignment.topLeft,
         decoration: BoxDecoration(

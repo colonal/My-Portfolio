@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/widget/page/no_internet.dart';
@@ -14,11 +16,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    log(size.toString(), name: "size");
     return SizedBox(
       height: size.height,
       width: size.width,
       child: BlocConsumer<HomeBloc, HomeState>(
-        listener: (_, __) {},
+        listener: (_, state) {
+          if (state is HomeFailureDataState)log(state.message);
+        },
         builder: (context, state) {
           debugPrint("state $state");
           if (state is HomeGgetDataState) {

@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 
 class SkillsItmeDesktopWidget extends StatelessWidget {
   final Map<String, List> data;
-  const SkillsItmeDesktopWidget({required this.data, Key? key})
+  final Size size;
+  const SkillsItmeDesktopWidget({required this.data, required this.size, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * 0.15,
+      height: size.height,
       child: FittedBox(
         fit: BoxFit.scaleDown,
         alignment: AlignmentDirectional.topStart,
@@ -22,7 +23,7 @@ class SkillsItmeDesktopWidget extends StatelessWidget {
               data.keys.first,
               minFontSize: 10,
               maxFontSize: 20,
-              style: theme.textTheme.headline4,
+              style: theme.textTheme.headlineSmall,
             ),
             const SizedBox(height: 20),
             ...List.generate(
@@ -33,7 +34,7 @@ class SkillsItmeDesktopWidget extends StatelessWidget {
                   "- ${data.values.first[index]}",
                   minFontSize: 10,
                   maxFontSize: 20,
-                  style: theme.textTheme.headline6,
+                  style: theme.textTheme.labelSmall,
                 ),
               ),
             )

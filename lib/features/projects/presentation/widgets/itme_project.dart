@@ -9,8 +9,9 @@ import '../../domain/entities/project.dart';
 
 class ItmeProject extends StatelessWidget {
   final Project data;
+  final Size size;
   final bool isDesktop;
-  const ItmeProject({required this.data, this.isDesktop = true, Key? key})
+  const ItmeProject({required this.data,required this.size, this.isDesktop = true, Key? key})
       : super(key: key);
 
   @override
@@ -18,8 +19,8 @@ class ItmeProject extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return Container(
       width: isDesktop
-          ? MediaQuery.of(context).size.width * 0.45
-          : MediaQuery.of(context).size.width * 0.9,
+          ? size.width * 0.45
+          : size.width * 0.9,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         border: Border.all(
@@ -59,7 +60,7 @@ class ItmeProject extends StatelessWidget {
                   Flexible(
                     child: AutoSizeText(
                       data.name,
-                      style: theme.textTheme.headline4,
+                      style: theme.textTheme.headlineSmall,
                       maxLines: 2,
                       minFontSize: 10,
                       overflow: TextOverflow.ellipsis,
@@ -80,59 +81,62 @@ class ItmeProject extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 5,
                 minFontSize: 10,
-                style: theme.textTheme.headline6,
+                style: theme.textTheme.labelSmall,
               ),
             ),
-            Row(
-              children: [
-                Text(
-                  "More Info:",
-                  style: theme.textTheme.headline6,
-                ),
-                const SizedBox(width: 40),
-                ...List.generate(
-                    data.infos.length,
-                    (index) => Image.network(
-                          data.infos[index].icon,
-                          fit: BoxFit.fill,
-                          errorBuilder: (ctx, _, __) => _buildIconImage(
-                              Image.asset("assets/images/idea.png"),
-                              index,
-                              context),
-                          loadingBuilder: (_, child, loadingProgress) {
-                            if (loadingProgress == null) {
-                              return _buildIconImage(child, index, context);
-                            }
-                            return AnimationImageLoading(
-                                width: 50,
-                                height: 50,
-                                isCircle: true,
-                                child: AnimationIcon(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10),
-                                    child: CircleAvatar(
-                                      radius: 18,
-                                      child: Container(),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                children: [
+                  Text(
+                    "More Info:",
+                    style: theme.textTheme.labelSmall,
+                  ),
+                  const SizedBox(width: 40),
+                  ...List.generate(
+                      data.infos.length,
+                      (index) => Image.network(
+                            data.infos[index].icon,
+                            fit: BoxFit.fill,
+                            errorBuilder: (ctx, _, __) => _buildIconImage(
+                                Image.asset("assets/images/idea.png"),
+                                index,
+                                context),
+                            loadingBuilder: (_, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return _buildIconImage(child, index, context);
+                              }
+                              return AnimationImageLoading(
+                                  width: 50,
+                                  height: 50,
+                                  isCircle: true,
+                                  child: AnimationIcon(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: CircleAvatar(
+                                        radius: 18,
+                                        child: Container(),
+                                      ),
                                     ),
-                                  ),
-                                  onTap: () async {
-                                    try {
-                                      final Uri url =
-                                          Uri.parse(data.infos[index].url);
-                                      if (!await launchUrl(url)) {
-                                        throw 'Could not launch $url';
+                                    onTap: () async {
+                                      try {
+                                        final Uri url =
+                                            Uri.parse(data.infos[index].url);
+                                        if (!await launchUrl(url)) {
+                                          throw 'Could not launch $url';
+                                        }
+                                      } catch (e) {
+                                        SnakBarMessage.showErrorSnackBar(
+                                            message: e.toString(),
+                                            context: context);
                                       }
-                                    } catch (e) {
-                                      SnakBarMessage.showErrorSnackBar(
-                                          message: e.toString(),
-                                          context: context);
-                                    }
-                                  },
-                                ));
-                          },
-                        )),
-              ],
+                                    },
+                                  ));
+                            },
+                          )),
+                ],
+              ),
             ),
           ],
         ),

@@ -15,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         final either = await getDataHome();
 
         either.fold(
-          (failuer) => emit(HomeFailureDataState(message: failuer.toString())),
+          (failuer) => emit(HomeFailureDataState(message: failuer.message.toString())),
           (data) => emit(HomeGgetDataState(data: data)),
         );
       }

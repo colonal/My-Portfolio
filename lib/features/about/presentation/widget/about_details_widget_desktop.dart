@@ -77,12 +77,15 @@ class AboutDetailsWidget extends StatelessWidget {
                 children: [
                   SocilMediaWidget(
                     itme: data.socialMedia.facebook,
+                    size:size,
                   ),
                   SocilMediaWidget(
                     itme: data.socialMedia.linkedin,
+                    size:size,
                   ),
                   SocilMediaWidget(
                     itme: data.socialMedia.github,
+                    size:size,
                   ),
                 ],
               ),
@@ -98,13 +101,13 @@ class AboutDetailsWidget extends StatelessWidget {
       TextSpan(text: title, children: [
         TextSpan(
           text: text,
-          style: theme.textTheme.headline4,
+          style: theme.textTheme.headlineSmall,
         )
       ]),
       textAlign: TextAlign.start,
       maxFontSize: 20,
       minFontSize: 10,
-      style: theme.textTheme.headline4!.copyWith(color: AppColor.textColor),
+      style: theme.textTheme.headlineSmall!.copyWith(color: AppColor.textColor),
     );
   }
 }

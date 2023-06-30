@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'screen_helper.dart';
@@ -13,44 +15,48 @@ class CountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width,
-      height: size.height,
-      child: ScreenHelper.isDesktop(context)
-          ? Stack(
-              children: [
-                FittedBox(
-                    fit: BoxFit.cover,
-                    child: SizedBox(
-                        width: size.width,
-                        height: size.height,
-                        child: child(context, size))),
-                Positioned(
-                  right: 0,
-                  top: 30,
-                  child: _countWidget(theme, size),
+    log("ScreenHelper",name: ScreenHelper.isDesktop(context).toString());
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          width: constraints.maxWidth,
+          height: constraints.maxHeight,
+          child: ScreenHelper.isDesktop(context)
+              ? Stack(
+                  children: [
+                    FittedBox(
+                        fit: BoxFit.cover,
+                        child: SizedBox(
+                            width: constraints.maxWidth,
+                            height: constraints.maxHeight,
+                            child: child(context, Size(constraints.maxWidth, constraints.maxHeight)))),
+                    Positioned(
+                      right: 0,
+                      top: 30,
+                      child: _countWidget(theme, constraints),
+                    ),
+                  ],
+                )
+              : Column(
+                  children: [
+                    Container(
+                      height: 30,
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: _countWidget(theme, constraints),
+                      ),
+                    ),
+                    child(context, Size(constraints.maxWidth, constraints.maxHeight - 40)),
+                  ],
                 ),
-              ],
-            )
-          : Column(
-              children: [
-                Container(
-                  height: 30,
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    alignment: AlignmentDirectional.centerEnd,
-                    child: _countWidget(theme, size),
-                  ),
-                ),
-                child(context, Size(size.width, size.height - 40)),
-              ],
-            ),
+        );
+      }
     );
   }
 
-  Row _countWidget(ThemeData theme, Size size) {
+  Row _countWidget(ThemeData theme,BoxConstraints constraints) {
     return Row(
       children: [
         AutoSizeText(
@@ -62,7 +68,7 @@ class CountPage extends StatelessWidget {
         const SizedBox(width: 3),
         Container(
           color: AppColor.textColorDark,
-          width: size.width * 0.1,
+          width: constraints.maxWidth * 0.1,
           height: 5,
           alignment: Alignment.center,
         ),

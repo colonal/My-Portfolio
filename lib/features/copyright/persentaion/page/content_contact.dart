@@ -44,12 +44,12 @@ class ContentContact extends StatelessWidget {
                   child: Text.rich(
                     TextSpan(
                       text: data.messages,
-                      style: theme.textTheme.headline6,
+                      style: theme.textTheme.labelSmall,
                       children: [
                         TextSpan(
                           text: " ${data.name}",
-                          style: theme.textTheme.headline6!.copyWith(
-                            color: theme.textTheme.headline1!.color,
+                          style: theme.textTheme.labelSmall!.copyWith(
+                            color: theme.textTheme.displayLarge!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

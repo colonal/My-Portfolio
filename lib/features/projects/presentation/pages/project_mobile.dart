@@ -48,8 +48,8 @@ class _ProjectMobileState extends State<ProjectMobile> {
                 height: size.height * 0.8,
                 child: Column(
                   children: [
-                    Expanded(child: newMethod(index * 2)),
-                    Expanded(child: newMethod(index * 2 + 1)),
+                    Expanded(child: newMethod(index * 2, size)),
+                    Expanded(child: newMethod(index * 2 + 1,size)),
                   ],
                 ),
               ),
@@ -69,14 +69,14 @@ class _ProjectMobileState extends State<ProjectMobile> {
     );
   }
 
-  Widget newMethod(int count) {
+  Widget newMethod(int count, Size size) {
     return count < widget.data.length
         ? Padding(
             padding: const EdgeInsets.all(5.0),
             child: FadeAnimation(
               offset: const Offset(0, 1),
               duration: Duration(milliseconds: (count + 6) * 100),
-              child: ItmeProject(data: widget.data[count], isDesktop: false),
+              child: ItmeProject(data: widget.data[count], isDesktop: false,size:size),
             ),
           )
         : Container();

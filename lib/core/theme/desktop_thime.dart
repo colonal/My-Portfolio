@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'app_color.dart';
 
 ThemeData desktopTheme = ThemeData(
-  brightness: Brightness.dark,
-  backgroundColor: AppColor.bodyColorDark,
+  brightness: Brightness.light,
   scaffoldBackgroundColor: AppColor.bodyColorDark,
   hintColor: AppColor.textColorDark,
   primaryColorLight: AppColor.bodyColorHint,
@@ -12,45 +11,50 @@ ThemeData desktopTheme = ThemeData(
   primaryColorDark: AppColor.bodyColorDark,
   cardColor: AppColor.buttonBackgroundColor,
   textTheme: TextTheme(
-    headline1: TextStyle(
+    displayLarge: TextStyle(
       color: AppColor.textColorDark,
       fontFamily: "Segone UI",
       fontSize: 60,
       fontWeight: FontWeight.bold,
       letterSpacing: 1.7,
     ),
-    headline2: TextStyle(
+    displayMedium: TextStyle(
       color: AppColor.textColor,
       fontFamily: "Segone UI",
       fontSize: 60,
       fontWeight: FontWeight.normal,
       letterSpacing: 1.7,
     ),
-    headline3: TextStyle(
+    displaySmall: TextStyle(
       color: AppColor.textColor,
       fontFamily: "Segone UI",
       fontSize: 30,
       fontWeight: FontWeight.w300,
       letterSpacing: 1.7,
     ),
-    headline4: TextStyle(
+    headlineSmall: TextStyle(
       color: AppColor.textColorDark,
       fontFamily: "Segone UI",
       fontSize: 30,
       fontWeight: FontWeight.bold,
       letterSpacing: 1.4,
     ),
-    headline5: TextStyle(
+    headlineMedium: TextStyle(
       color: AppColor.textColor,
       fontFamily: "Segone UI",
       fontSize: 20,
       fontWeight: FontWeight.normal,
       letterSpacing: 1.3,
     ),
-    headline6: TextStyle(
+    labelSmall: TextStyle(
       color: AppColor.textColor.withOpacity(0.7),
       fontSize: 20,
       fontWeight: FontWeight.w200,
     ),
+  ),
+  colorScheme: ColorScheme.fromSwatch().copyWith(
+    background: AppColor.bodyColorDark,
+    brightness: Brightness.light,
+    onError: AppColor.error,
   ),
 );

@@ -9,15 +9,16 @@ class HomeMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size szie = MediaQuery.of(context).size;
-    return ContentWidget(
-      data: data,
-      imgSize: szie.height < 452
-          ? Size(szie.height * 0.2, szie.height * 0.2)
-          : const Size(150, 150),
-      widthLine: 40,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ContentWidget(
+          data: data,
+          imgSize: constraints.maxHeight < 452
+              ? Size(constraints.maxHeight * 0.2, constraints.maxHeight * 0.2)
+              : const Size(150, 150),
+          widthLine: 40,
+        );
+      }
     );
   }
 }
-
-// 452

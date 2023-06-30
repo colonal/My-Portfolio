@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../domin/entites/skills.dart';
 import '../../domin/usecases/skills_usecases.dart';

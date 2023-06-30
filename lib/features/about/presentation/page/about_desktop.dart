@@ -1,5 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/utils/calculate_font_size.dart';
 import '../../../../core/widget/helper/count_page.dart';
 import '../../../../core/widget/animation/fade_animation.dart';
 import '../../../../core/widget/helper/title_page.dart';
@@ -16,76 +16,94 @@ class AboutDesktop extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     return CountPage(
       countText: "01",
-      child: (context, size) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: FadeAnimation(
-                  offset: const Offset(-1, 0),
-                  duration: const Duration(milliseconds: 500),
-                  child: ImageWidgetDesktop(img: data.image)),
-            ),
-            Expanded(
-              flex: 3,
-              child: SizedBox(
-                height: size.height,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: size.height * 0.2,
-                      child: const FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: FadeAnimation(
-                          offset: Offset(10, 0),
-                          duration: Duration(seconds: 1),
-                          child: TitlePage(
-                            title: "About Me",
-                            subTitle: "Discover",
-                          ),
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 25),
-                        child: FadeAnimation(
-                          offset: const Offset(15, 0),
-                          duration: const Duration(milliseconds: 1500),
-                          child: AutoSizeText(
-                            data.summary.replaceAll("\\n", "\n\n"),
-                            minFontSize: 14,
-                            maxFontSize: 30,
-                            style: theme.textTheme.headline3,
-                          ),
-                        ),
-                      ),
-                    ),
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: FadeAnimation(
-                        offset: const Offset(20, 0),
-                        duration: const Duration(seconds: 2),
-                        child: SizedBox(
-                            height: size.height * 0.2,
-                            width: size.width * 0.7,
-                            child: AboutDetailsWidget(
-                                data: data,
-                                size:
-                                    Size(size.width * 0.7, size.height * 0.2))),
-                      ),
-                    ),
-                  ],
+      child: (context, size) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SizedBox(
+            width: size.width,
+            height: size.height,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: FadeAnimation(
+                      offset: const Offset(-1, 0),
+                      duration: const Duration(milliseconds: 500),
+                      child: ImageWidgetDesktop(img: data.image)),
                 ),
-              ),
+                Expanded(
+                  flex: 3,
+                  child: SizedBox(
+                    height: size.height,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: size.height * 0.2,
+                          child: const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: FadeAnimation(
+                              offset: Offset(10, 0),
+                              duration: Duration(seconds: 1),
+                              child: TitlePage(
+                                title: "About Me",
+                                subTitle: "Discover",
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: FadeAnimation(
+                            offset: const Offset(15, 0),
+                            duration: const Duration(milliseconds: 1500),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: LayoutBuilder(
+                                builder: (BuildContext context,
+                                    BoxConstraints constraints) {
+                                  return Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Text(
+                                      data.summary.replaceAll("\\n", "\n"),
+                                      style: theme.textTheme.displaySmall!
+                                          .copyWith(
+                                              fontSize: calculateFontSize(
+                                                  BoxConstraints(maxHeight: constraints.maxHeight-10, maxWidth: constraints.maxWidth-10),
+                                                  data.summary
+                                                      .replaceAll("\\n", "\n")
+                                                      .length)),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: FadeAnimation(
+                            offset: const Offset(20, 0),
+                            duration: const Duration(seconds: 2),
+                            child: SizedBox(
+                                height: size.height * 0.2,
+                                width: size.width * 0.7,
+                                child: AboutDetailsWidget(
+                                    data: data,
+                                    size: Size(
+                                        size.width * 0.7, size.height * 0.2))),
+                          ),
+                        ),
+                        SizedBox(height: size.height*.05),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

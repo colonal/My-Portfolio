@@ -8,8 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SocilMediaWidget extends StatelessWidget {
   final SocialMediaItme itme;
-  final double height;
-  const SocilMediaWidget({required this.itme, this.height = 0, super.key});
+  final Size size;
+  const SocilMediaWidget({required this.itme, required this.size, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class SocilMediaWidget extends StatelessWidget {
       },
       child: ScreenHelper.isMobile(context)
           ? Container(
-              height: height * 0.8,
-              width: height * 0.8,
+              height: size.height * 0.8,
+              width: size.height * 0.8,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(image: AssetImage(itme.icon))),
@@ -46,7 +46,7 @@ class SocilMediaWidget extends StatelessWidget {
                       itme.name,
                       minFontSize: 5,
                       maxFontSize: 15,
-                      style: theme.textTheme.headline6!
+                      style: theme.textTheme.labelSmall!
                           .copyWith(fontWeight: FontWeight.normal),
                     ),
                   ),

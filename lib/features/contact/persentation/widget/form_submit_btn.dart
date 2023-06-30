@@ -58,12 +58,12 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
         decoration: BoxDecoration(
             color: isHover
                 ? Theme.of(context).primaryColorDark
-                : Theme.of(context).textTheme.headline1!.color,
-            borderRadius: BorderRadius.circular(isSend ? 0 : 8),
+                : Theme.of(context).textTheme.displayLarge!.color,
+            // borderRadius: BorderRadius.circular(isSend ? 1 : 8),
             border: isSend
                 ? null
                 : Border.all(
-                    color: Theme.of(context).textTheme.headline1!.color!,
+                    color: Theme.of(context).textTheme.displayLarge!.color!,
                     width: 2,
                   )),
         child: InkWell(
@@ -119,7 +119,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
             child: isLoading
                 ? Center(
                     child: DefaultTextStyle(
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             fontSize: isDesktop ? 16 : 12,
                             color: AppColor.textColorDark,
@@ -154,7 +154,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
                                   isError ? Icons.error : Icons.done,
                                   color: Theme.of(context)
                                       .textTheme
-                                      .headline1!
+                                      .displayLarge!
                                       .color!,
                                 ),
                               ),
@@ -166,7 +166,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
                               isError ? "Failed" : "Done",
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline6!
+                                  .labelSmall!
                                   .copyWith(
                                     fontWeight: FontWeight.bold,
                                     fontSize: isDesktop ? 16 : 12,
@@ -193,7 +193,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
                                   size: isDesktop ? 25 : 15,
                                   color: Theme.of(context)
                                       .textTheme
-                                      .headline1!
+                                      .displayLarge!
                                       .color!,
                                 ),
                               ),
@@ -205,7 +205,7 @@ class _FormSubmitBtnState extends State<FormSubmitBtn>
                               "SEND MESSAGE",
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline6!
+                                  .labelSmall!
                                   .copyWith(
                                     fontWeight: FontWeight.bold,
                                     fontSize: isDesktop ? 16 : 12,

@@ -6,9 +6,11 @@ class TextInputWidget extends StatelessWidget {
   final String hintText;
   final bool multiLine;
   final TextInputType textInputType;
+  final Size size;
   const TextInputWidget(
       {required this.controller,
       required this.hintText,
+      required this.size,
       this.textInputType = TextInputType.text,
       this.multiLine = false,
       Key? key})
@@ -20,11 +22,11 @@ class TextInputWidget extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         width: isDesktop
-            ? MediaQuery.of(context).size.width * 0.5
-            : MediaQuery.of(context).size.width * 0.8,
-        child: TextFormField(
+            ? size.width * 0.5
+            : size.width * 0.8,
+        child:TextFormField(
           keyboardType: TextInputType.multiline,
-          style: Theme.of(context).textTheme.headline6!.copyWith(
+          style: Theme.of(context).textTheme.labelSmall!.copyWith(
                 color: Theme.of(context).cardColor,
                 fontSize: 18,
               ),
@@ -40,10 +42,16 @@ class TextInputWidget extends StatelessWidget {
           },
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: Theme.of(context).textTheme.headline6,
+            hintStyle: Theme.of(context).textTheme.labelSmall,
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: Theme.of(context).cardColor,
+                width: 1.1,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).hintColor,
                 width: 1.1,
               ),
             ),

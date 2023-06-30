@@ -9,7 +9,6 @@ class ImageWidgetDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    final Size size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.only(right: 20),
       child: Center(
@@ -63,26 +62,30 @@ class ImageWidgetDesktop extends StatelessWidget {
               );
             }
             return Center(
-              child: AnimationImageLoading(
-                height: size.height * 0.6,
-                width: double.infinity,
-                child: Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  height: size.height * 0.6,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: theme.primaryColorDark,
-                    border:
-                        Border.all(color: theme.primaryColorDark, width: 15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        offset: const Offset(0, 3),
-                        blurRadius: 6,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return AnimationImageLoading(
+                    height: constraints.maxHeight * 0.6,
+                    width: double.infinity,
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      height: constraints.maxHeight * 0.6,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: theme.primaryColorDark,
+                        border:
+                            Border.all(color: theme.primaryColorDark, width: 15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: const Offset(0, 3),
+                            blurRadius: 6,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                }
               ),
             );
           },

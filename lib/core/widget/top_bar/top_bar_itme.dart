@@ -38,7 +38,7 @@ class _TopBarItmeState extends State<TopBarItme> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2),
+                  // borderRadius: BorderRadius.circular(2),
                   border: Border.all(
                       width: 1,
                       color: widget.isEnd

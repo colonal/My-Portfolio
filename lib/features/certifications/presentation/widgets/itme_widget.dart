@@ -46,7 +46,7 @@ class ItmeWidget extends StatelessWidget {
                     Flexible(
                       child: AutoSizeText(
                         data.title,
-                        style: theme.textTheme.headline4,
+                        style: theme.textTheme.headlineSmall,
                         maxLines: 2,
                         minFontSize: 10,
                         overflow: TextOverflow.ellipsis,
@@ -59,7 +59,7 @@ class ItmeWidget extends StatelessWidget {
               Flexible(
                 child: AutoSizeText(
                   data.company,
-                  style: theme.textTheme.headline6!.copyWith(
+                  style: theme.textTheme.labelSmall!.copyWith(
                     // fontSize: isDesktop ? 16 : 14,
                     fontWeight: FontWeight.w200,
                   ),
@@ -69,7 +69,7 @@ class ItmeWidget extends StatelessWidget {
               Flexible(
                 child: AutoSizeText(
                   data.issueDate,
-                  style: theme.textTheme.headline6!.copyWith(
+                  style: theme.textTheme.labelSmall!.copyWith(
                     fontWeight: FontWeight.w200,
                   ),
                 ),
@@ -80,7 +80,7 @@ class ItmeWidget extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(20),
+                  // borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: theme.cardColor),
                 ),
                 child: MaterialButton(

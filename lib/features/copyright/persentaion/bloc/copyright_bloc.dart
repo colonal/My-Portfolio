@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../domain/entities/copyright.dart';
 import '../../domain/usecases/copyright_usecase.dart';

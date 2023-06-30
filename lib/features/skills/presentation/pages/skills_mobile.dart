@@ -51,6 +51,7 @@ class SkillsMobile extends StatelessWidget {
                               child: SkillsItmeMobileWidget(
                                 data: data[index],
                                 showDivider: data.length - 1 != index,
+                                size: size,
                               ),
                             ),
                           )),

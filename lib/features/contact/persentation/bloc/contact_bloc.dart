@@ -26,6 +26,7 @@ class ContactBloc extends Cubit<ContactState> {
   }
 
   Future<int> send() async {
+    print("send");
     final Contact contact = Contact(
       name: nameController.text,
       email: emailController.text,

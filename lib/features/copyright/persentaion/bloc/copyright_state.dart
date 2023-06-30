@@ -1,6 +1,5 @@
 part of 'copyright_bloc.dart';
 
-@immutable
 abstract class CopyrightState {}
 
 class CopyrightInitial extends CopyrightState {}

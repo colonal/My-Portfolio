@@ -20,6 +20,7 @@ class ContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Container(
       width: size.width,
       height: size.height,
@@ -111,23 +112,19 @@ class ContentWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 50),
                     FadeAnimation(
-                      offset: const Offset(-1, 0),
-                      duration: const Duration(milliseconds: 600),
                       child: AutoSizeText(
                         data.name,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.displayLarge,
                         minFontSize: 16,
                       ),
                     ),
                     const SizedBox(height: 30),
                     FadeAnimation(
-                      offset: const Offset(-1, 0),
-                      duration: const Duration(seconds: 1),
                       child: AutoSizeText(
                         data.career,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline3,
+                        style: Theme.of(context).textTheme.displaySmall,
                         minFontSize: 14,
                       ),
                     ),
@@ -150,10 +147,11 @@ class ContentWidget extends StatelessWidget {
                     AutoSizeText(
                       "Scroll Down",
                       minFontSize: 12,
-                      style: Theme.of(context).textTheme.headline5!.copyWith(
-                            color: AppColor.textColor.withOpacity(0.5),
-                            fontWeight: FontWeight.w300,
-                          ),
+                      style:
+                          Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                color: AppColor.textColor.withOpacity(0.5),
+                                fontWeight: FontWeight.w300,
+                              ),
                     ),
                   ],
                 ),

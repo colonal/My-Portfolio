@@ -8,12 +8,15 @@ class HomeDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size szie = MediaQuery.of(context).size;
-    return ContentWidget(
-      data: data,
-      imgSize: szie.height < 560
-          ? Size(szie.height * 0.3, szie.height * 0.3)
-          : const Size(292, 292),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return ContentWidget(
+          data: data,
+          imgSize: constraints.maxHeight < 560
+              ? Size(constraints.maxHeight * 0.3, constraints.maxHeight * 0.3)
+              : const Size(292, 292),
+        );
+      }
     );
   }
 }
