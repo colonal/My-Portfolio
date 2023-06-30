@@ -44,7 +44,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       children: [
                         Text(
                           topBar[index],
-                          style: theme.textTheme.headline6!.copyWith(
+                          style: theme.textTheme.labelSmall!.copyWith(
                             color: selectItme == index
                                 ? theme.hintColor
                                 : theme.cardColor,

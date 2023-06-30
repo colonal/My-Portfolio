@@ -38,7 +38,7 @@ class _TopBarItmeState extends State<TopBarItme> {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.circular(2),
                   border: Border.all(
                       width: 1,
                       color: widget.isEnd
@@ -46,7 +46,7 @@ class _TopBarItmeState extends State<TopBarItme> {
                           : Colors.transparent)),
               child: Text(
                 widget.text,
-                style: Theme.of(context).textTheme.headline6!.copyWith(
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: isHover || widget.isClick || widget.isEnd
                           ? Theme.of(context).hintColor

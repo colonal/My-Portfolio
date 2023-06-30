@@ -24,7 +24,7 @@ class AbouitMobile extends StatelessWidget {
             children: [
               FadeAnimation(
                 offset: const Offset(-20, 0),
-                duration: const Duration(seconds: 1),
+                duration: const Duration(milliseconds: 500),
                 child: SizedBox(
                   height: size.height * 0.2,
                   child: ImageWidgetMobil(img: data.image),
@@ -33,7 +33,7 @@ class AbouitMobile extends StatelessWidget {
               Expanded(
                 child: FadeAnimation(
                   offset: const Offset(20, 0),
-                  duration: const Duration(seconds: 2),
+                  duration: const Duration(milliseconds: 1000),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: LayoutBuilder(
@@ -55,7 +55,7 @@ class AbouitMobile extends StatelessWidget {
               ),
               FadeAnimation(
                 offset: const Offset(0, 20),
-                duration: const Duration(seconds: 3),
+                duration: const Duration(milliseconds: 1500),
                 child: SizedBox(
                     height: size.height * 0.2,
                     width: size.width,

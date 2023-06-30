@@ -56,7 +56,7 @@ class AboutDesktop extends StatelessWidget {
                         Expanded(
                           child: FadeAnimation(
                             offset: const Offset(15, 0),
-                            duration: const Duration(milliseconds: 1500),
+                            duration: const Duration(milliseconds: 1000),
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: LayoutBuilder(
@@ -84,7 +84,7 @@ class AboutDesktop extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           child: FadeAnimation(
                             offset: const Offset(20, 0),
-                            duration: const Duration(seconds: 2),
+                            duration: const Duration(milliseconds: 1500),
                             child: SizedBox(
                                 height: size.height * 0.2,
                                 width: size.width * 0.7,

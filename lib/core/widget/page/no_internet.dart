@@ -15,6 +15,7 @@ class NoInternet extends StatelessWidget {
           height: 50,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
             color: Theme.of(context).hintColor,
           ),
           child: MaterialButton(

@@ -23,11 +23,11 @@ class TitlePage extends StatelessWidget {
         Text(
           subTitle,
           style:
-              theme.textTheme.headline3!.copyWith(fontWeight: FontWeight.bold),
+              theme.textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
         ),
         Text(
           title,
-          style: theme.textTheme.headline1,
+          style: theme.textTheme.displayLarge,
         ),
         Container(
           color: AppColor.textColorDark,

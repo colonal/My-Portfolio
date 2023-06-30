@@ -95,10 +95,10 @@ class ItmeWidget extends StatelessWidget {
                           message: e.toString(), context: context);
                     }
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  child:  Padding(
+                    padding:const EdgeInsets.symmetric(horizontal: 20),
                     child: Center(
-                      child: Text("Show Credential"),
+                      child: Text("Show Credential", style: theme.textTheme.labelSmall,),
                     ),
                   ),
                 ),

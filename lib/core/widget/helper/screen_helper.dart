@@ -1,24 +1,32 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:universal_html/html.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ScreenHelper extends StatelessWidget {
   final Widget mobile;
   final Widget desktop;
+  static double size = 800;
 
   const ScreenHelper({Key? key, required this.desktop, required this.mobile})
       : super(key: key);
 
-  static bool isMobile(BuildContext context) =>
-      MediaQuery.of(context).size.width < 800.0;
+  static bool isMobile(BuildContext context) {
+    
+     Size size = _getSize(context);
+    log((size.width < 800.0).toString(),
+        name: "isMobile");
+    return  size.width < 800.0;
+  }
 
   static bool isDesktop(BuildContext context) {
-    log(MediaQuery.of(context).size.width.toString(), name: "isDesktop");
-    if (MediaQuery.of(context).size.width == 0) {
-      return true;
-    }
-    return MediaQuery.of(context).size.width >= 800.0;
+    Size size = _getSize(context);
+    log(size.width.toString(), name: "isDesktop");
+    return size.width >= 800.0;
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +34,26 @@ class ScreenHelper extends StatelessWidget {
       data: const MediaQueryData(),
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          log("constraints: $constraints\nsize:${MediaQuery.of(context).size}",
-              name: "constraints");
-          if (constraints.maxWidth == 0 || constraints.maxHeight == 0) {
-            return Container();
-          }
+          log(constraints.toString(), name: "ScreenHelper");
+          Size size = _getSize(context);
           return AnimatedContainer(
             duration: const Duration(milliseconds: 500),
-            child: (constraints.maxWidth >= 800) ? desktop : mobile,
+            child: (size.width >= 800) ? desktop : mobile,
           );
         },
       ),
     );
   }
 
-  Future<double> whenNotZero(Stream<double> source) async {
-    await for (double value in source) {
-      print("Width:" + value.toString());
-      if (value > 0) {
-        print("Width > 0: " + value.toString());
-        return value;
-      }
+  static Size _getSize(BuildContext context) {
+    late Size size;
+    if (kIsWeb) {
+      size =
+          Size(window.innerWidth!.toDouble(), window.innerHeight!.toDouble());
+    } else {
+      size = MediaQuery.of(context).size;
     }
-    // stream exited without a true value, maybe return an exception.
-    return 100;
+    log(size.toString(), name: "_getSize");
+    return size;
   }
 }

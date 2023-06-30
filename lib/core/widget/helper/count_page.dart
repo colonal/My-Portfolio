@@ -15,9 +15,9 @@ class CountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    log("ScreenHelper",name: ScreenHelper.isDesktop(context).toString());
     return LayoutBuilder(
       builder: (context, constraints) {
+    log("ScreenHelper",name: ScreenHelper.isDesktop(context).toString());
         return SizedBox(
           width: constraints.maxWidth,
           height: constraints.maxHeight,
@@ -62,7 +62,7 @@ class CountPage extends StatelessWidget {
         AutoSizeText(
           countText,
           minFontSize: 14,
-          style: theme.textTheme.headline1!
+          style: theme.textTheme.displayLarge!
               .copyWith(color: theme.primaryColorLight),
         ),
         const SizedBox(width: 3),
