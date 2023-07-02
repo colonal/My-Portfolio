@@ -2,7 +2,7 @@
 from flask import Flask
 from flask_restful import Api
 
-from sendEmailRequest import SendEmail
+from  mailer.sendEmailRequest import SendEmail
 
 app = Flask(__name__)
 

@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request
-from mailer import Mailer
+from  mailer.mailer import Mailer
 
 
 
