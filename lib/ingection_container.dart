@@ -10,6 +10,7 @@ import 'features/certifications/domain/repositories/certifications_repositories.
 import 'features/certifications/domain/usecases/certifications_usecases.dart';
 import 'features/certifications/presentation/bloc/certifications_bloc.dart';
 import 'features/contact/data/datasources/contact_remote_data_sources.dart';
+import 'features/contact/data/datasources/send_email.dart';
 import 'features/contact/data/repositories/contact_repositories_impl.dart';
 import 'features/contact/domain/repositories/contact_repositories.dart';
 import 'features/contact/domain/usecases/add_contact.dart';
@@ -128,8 +129,10 @@ Future<void> init() async {
       () => ContactRepositoriesImpl(dataSource: sl()));
 
   // datasourse
+  sl.registerLazySingleton<SendEmail>(() => SendEmailImpl());
+
   sl.registerLazySingleton<ContactRemoteDataSource>(
-      () => ContactRemoteDataSourceImpl(firestore: sl()));
+      () => ContactRemoteDataSourceImpl(firestore: sl(),sendEmail: sl()));
 
   // Feature Copyright
   // Bloc

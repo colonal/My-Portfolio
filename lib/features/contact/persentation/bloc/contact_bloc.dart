@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_profile/features/contact/data/model/contact_model.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/usecases/add_contact.dart';
 
@@ -27,7 +28,7 @@ class ContactBloc extends Cubit<ContactState> {
 
   Future<int> send() async {
     print("send");
-    final Contact contact = Contact(
+    final Contact contact = ContactModel(
       name: nameController.text,
       email: emailController.text,
       subject: subjectController.text,

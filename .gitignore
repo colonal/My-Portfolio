@@ -55,3 +55,7 @@ firebase.json
 /.firebase/
 .data/
 .vscode/
+lib/features/contact/data/datasources/url.dart
+**/__pycache__
+**/.venv
+**/.env

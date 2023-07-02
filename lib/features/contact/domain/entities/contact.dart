@@ -1,4 +1,4 @@
-class Contact {
+abstract class Contact {
   final String name;
   final String email;
   final String subject;
@@ -9,4 +9,7 @@ class Contact {
     required this.subject,
     required this.message,
   });
+
+   Map<String, String> toMap();
+  Map<String, String> toEmailMap( String yourName);
 }

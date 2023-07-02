@@ -8,12 +8,24 @@ class ContactModel extends Contact {
     required super.message,
   });
 
-  static Map<String, String> toMap(Contact model) {
+  @override
+  Map<String, String> toMap() {
     return {
-      "name": model.name,
-      "email": model.email,
-      "subject": model.subject,
-      "message": model.message,
+      "name": name,
+      "email": email,
+      "subject": subject,
+      "message": message,
+    };
+  }
+  
+  @override
+  Map<String, String> toEmailMap( String yourName) {
+    return {
+      "sendersName": name,
+      "emailTo": email,
+      "subject": subject,
+      "userMessage": message,
+      "yourName":yourName,
     };
   }
 }
