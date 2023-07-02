@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:math' as math;
 
 class ScreenHelper extends StatelessWidget {
   final Widget mobile;
@@ -48,8 +49,17 @@ class ScreenHelper extends StatelessWidget {
   static Size _getSize(BuildContext context) {
     late Size size;
     if (kIsWeb) {
-      size =
-          Size(window.innerWidth!.toDouble(), window.innerHeight!.toDouble());
+      final width = math.max(
+          (document.documentElement?.clientWidth ?? 0).toDouble(),
+          window.innerWidth!.toDouble());
+      final height = math.max(
+          (document.documentElement?.clientHeight ?? 0).toDouble(),
+          window.innerHeight!.toDouble());
+      
+      size = Size(
+        width,
+        height,
+      );
     } else {
       size = MediaQuery.of(context).size;
     }
