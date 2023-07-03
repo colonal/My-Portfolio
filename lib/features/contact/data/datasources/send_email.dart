@@ -11,11 +11,10 @@ abstract class SendEmail {
 class SendEmailImpl extends SendEmail {
   @override
   Future send({required Map<String, String> body}) async {
-    var headers = {
+    Map<String, String> headers = {
       "Access-Control-Allow-Origin": "*",
-      'Content-Type': 'application/json',
-      'Accept': '*/*',
       'Access-Control-Allow-Credentials': 'true',
+      'Content-Type': 'application/json',
     };
     var request = http.Request('POST', Uri.parse(URL));
     request.body = json.encode(body);
