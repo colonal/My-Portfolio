@@ -1,10 +1,12 @@
 
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 
 from  mailer.sendEmailRequest import SendEmail
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 prefix = "/api"
 api = Api(app, prefix=prefix)

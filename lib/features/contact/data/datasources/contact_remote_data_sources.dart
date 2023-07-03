@@ -37,7 +37,7 @@ class ContactRemoteDataSourceImpl extends ContactRemoteDataSource {
         SetOptions(
           merge: true,
         ));
-    sendEmail.send(body: data.toEmailMap(yourName));
+    await sendEmail.send(body: data.toEmailMap(yourName));
     return Future.value(unit);
   }
 }
